@@ -229,10 +229,10 @@ Suppose $\mathcal{F}$ was complete. Then we could solve the Halting Problem usin
 \begin{lstlisting}
 $H(A)$ {
   for $s$ $\in$ all possible strings @\footnotemark@ {
-    if $s$ is a proof in $\mathcal{F}$ that $A(A)$ doesn't halt {
+    if $s$ proves @<<@$A(A)$ doesn't halt@>>@ {
       return false;
     }
-    if $s$ is a proof in $\mathcal{F}$ that $A(A)$ halts {
+    if $s$ proves @<<@$A(A)$ halts@>>@ {
       return true;
     }
   }
@@ -259,7 +259,7 @@ Consider the following algorithm:\\[0.5em]
 \begin{lstlisting}
 $P(A)$ {
   for $s$ $\in$ all possible strings {
-    if $s$ is a proof in $\mathcal{F}$ that $A(A)$ doesn't halt {
+    if $s$ proves @<<@$A(A)$ doesn't halt@>>@ {
       halt;
     }
   }
@@ -319,10 +319,10 @@ Consider the following algorithm:\\[0.5em]
 \begin{lstlisting}
 $B(A)$@\footnotemark@ {
   for $s$ $\in$ all possible strings {
-    if $s$ is a proof in $\mathcal{F}$ that $A(A)$ doesn't halt {
+    if $s$ proves @<<@$A(A)$ doesn't halt@>>@ {
       halt;
     }
-    if $s$ is a proof in $\mathcal{F}$ that $A(A)$ halts {
+    if $s$ proves @<<@$A(A)$ halts@>>@ {
       infinite loop;
     }
   }
