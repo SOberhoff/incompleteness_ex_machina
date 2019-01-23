@@ -92,7 +92,7 @@ But honesty is a stronger assumption than consistency. An honest formal system i
 
 Imagine I'm the leader of an idyllic communist utopia. Everything is going according to five-year plan. Except one day one of my nuclear reactors suddenly catches on fire. If I then tell the world community that there's nothing to worry about, this will merely be a lie, not a contradiction. Even once Swedish scientists begin smelling the fire my excuses, while fabricated, can still remain \textit{internally} consistent. It's only when I finally confess to my mishap that I contradict myself. At that point I have given two directly contradictory accounts. Now even those without a Geiger counter can tell that I've been dishonest.
 
-Disorienting as it may be, this dishonest-yet-consistent state can also occur in formal systems. Most important for our purposes, it is conceivable that we can prove $\neg G =$ <<$G$ is provable>> while $G$ in fact \textit{isn't} provable. This would lead to a curious situation I'll call \textit{sub-inconsistency}\footnote{Also known under the name ``\textit{$\omega$-inconsistency}". Let's spare our horses.} where for any $n\in\mathbb{N}$ the sentence <<$G$ doesn't have a proof shorter than $n$>> = $G$ can be proven in $\mathcal{F}$ by just going through all possible proofs up to length $n$ and pointing out that none of them do the trick. Yet the summarizing sentence <<$G$ doesn't have a proof shorter than $n$ for any $n\in\mathbb{N}$>> = $G$ is not only unprovable but flat out contradicted by $\neg G$. This is why Gödel had to assume honesty (or at least \textit{super-consistency}) in his original proof. Basically, he had to press $\mathcal{F}$ up against the wall and shout: ``No games, dammit!"
+Disorienting as it may be, this dishonest-yet-consistent state can also occur in formal systems. Most important for our purposes, it is conceivable that we can prove $\neg G =$ <<$G$ is provable>> while $G$ in fact \textit{isn't} provable. This would lead to a curious situation I'll call \textit{sub-inconsistency}\footnote{Also known under the name ``\textit{$\omega$-inconsistency}". Let's spare our horses.} where for any $n\in\mathbb{N}$ the sentence <<$G$ doesn't have a proof shorter than $n$>> can be proven in $\mathcal{F}$ by just going through all possible proofs up to length $n$ and pointing out that none of them do the trick. Yet the summarizing sentence <<$G$ doesn't have a proof shorter than $n$ for any $n\in\mathbb{N}$>> = $G$ is not only unprovable but flat out contradicted by $\neg G$. This is why Gödel had to assume honesty (or at least \textit{super-consistency}) in his original proof. Basically, he had to press $\mathcal{F}$ up against the wall and shout: ``No games, dammit!"
 
 Okay, but isn't there a less violent way to prevent this kind of sub-terfuge? Indeed there is. In 1936 J. Barkley Rosser found a way to demonstrate the improved
 
@@ -184,10 +184,10 @@ Suppose $H$ solves the Halting Problem. Then one could create the following algo
 \begin{minipage}{\linewidth}
 \begin{lstlisting}
 $\overline{H}(A)$ {
-  if $H(A)$ = false {
+  if $H(A)$ rejects {
     halt;
   }
-  if $H(A)$ = true {
+  if $H(A)$ accepts {
     infinite loop;
   }
 }
@@ -198,7 +198,7 @@ Question: does $\overline{H}(\overline{H})$ halt?\\[0.5em]
 \begin{description}[noitemsep]
 \nameditem{Either $\overline{H}(\overline{H})$ halts:} 
 \begin{itemize}[noitemsep]
-\impl $H(\overline{H})$ returns \lstinline{true}
+\impl $H(\overline{H})$ accepts.
 \impl $\overline{H}(\overline{H})$ doesn't halt. \lightning
 \end{itemize}
 \end{description}
@@ -207,7 +207,7 @@ Question: does $\overline{H}(\overline{H})$ halt?\\[0.5em]
 \begin{description}[noitemsep]
 \nameditem{Or $\overline{H}(\overline{H})$ doesn't halt:} 
 \begin{itemize}[noitemsep]
-\impl $H(\overline{H})$ returns \lstinline{false}.
+\impl $H(\overline{H})$ rejects.
 \impl $\overline{H}(\overline{H})$ halts. \lightning
 \end{itemize}
 \end{description}
@@ -229,10 +229,10 @@ Suppose $\mathcal{F}$ was complete. Then we could solve the Halting Problem usin
 $H(A)$ {
   for $s$ $\in$ all possible strings @\footnotemark@ {
     if $s$ proves @<<@$A(A)$ doesn't halt@>>@ {
-      return false;
+      reject;
     }
     if $s$ proves @<<@$A(A)$ halts@>>@ {
-      return true;
+      accept;
     }
   }
 }
