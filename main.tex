@@ -10,6 +10,7 @@
 \usepackage[euler-digits,euler-hat-accent]{eulervm}
 \usepackage{epigraph}
 \usepackage{enumitem}
+\usepackage{accents}
 
 \theoremstyle{theorem}
 \newtheorem{theorem}{Theorem}
@@ -17,6 +18,7 @@
 
 \newcommand{\nameditem}[1]{\item\textbf{#1}}
 \newcommand{\impl}{\item[$\Rightarrow$]}
+\newcommand{\infi}[1]{\accentset{\scalebox{0.35}{$\infty$}}{#1}}
 
 \lstset{mathescape=true, escapechar=@, morekeywords={for, if, return, while, true, false}, frame=tb}
 
@@ -265,31 +267,31 @@ $P(A)$ {
 }
 \end{lstlisting}
 \end{minipage}
-I now claim that <<$P(P)$ doesn't halt>> is undecidable in $\mathcal{F}$. Let's call this sentence $\ddot{G}$ because it's the perfect analogue of Gödel's $G$. You can think of the two dots as Clark Kent's glasses. The critical new feature of $\ddot{G}$ is that its construction has become just a small matter of programming. If we go through the alternatives, we find:
+I now claim that <<$P(P)$ doesn't halt>> is undecidable in $\mathcal{F}$. Let's call this sentence $\infi{G}$ because it's the perfect analogue of Gödel's $G$. The critical new feature of $\infi{G}$ is that its construction has become just a small matter of programming. If we go through the alternatives, we find:
 \begin{description}
-\nameditem{Suppose $\ddot{G}$ is provable:}
+\nameditem{Suppose $\infi{G}$ is provable:}
 \begin{description}
-\nameditem{Either $\neg \ddot{G}$ is also provable:}
+\nameditem{Either $\neg \infi{G}$ is also provable:}
 \begin{itemize}
 \impl $\mathcal{F}$ is inconsistent. \lightning
 \end{itemize}
-\nameditem{Or $\neg \ddot{G}$ isn't provable:}
+\nameditem{Or $\neg \infi{G}$ isn't provable:}
 \begin{itemize}
-\impl Because $\ddot{G}$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out in $\mathcal{F}$.
-\impl Because this sequence leads to a terminal state this gives a proof of <<$P(P)$ halts>> = $\neg \ddot{G}$. \lightning
+\impl Because $\infi{G}$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out in $\mathcal{F}$.
+\impl Because this sequence leads to a terminal state this gives a proof of <<$P(P)$ halts>> = $\neg \infi{G}$. \lightning
 \end{itemize}
 \end{description}
-\nameditem{Suppose $\neg \ddot{G}$ is provable:}
+\nameditem{Suppose $\neg \infi{G}$ is provable:}
 \begin{description}
-\nameditem{Either $\ddot{G}$ is also provable:}
+\nameditem{Either $\infi{G}$ is also provable:}
 \begin{itemize}
 \impl $\mathcal{F}$ is inconsistent. \lightning
 \end{itemize}
-\nameditem{Or $\ddot{G}$ isn't provable:}
+\nameditem{Or $\infi{G}$ isn't provable:}
 \begin{itemize}
-\impl Because $\neg \ddot{G}$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out in $\mathcal{F}$.
-\impl But in order to halt $P(P)$ will have to find a proof of $\ddot{G}$ = <<$P(P)$ doesn't halt>>, not $\neg \ddot{G}$ (uh-oh).
-\impl $P(P)$ doesn't halt despite the fact that this is exactly what $\neg \ddot{G}$ = <<$P(P)$ halts>> asserts.
+\impl Because $\neg \infi{G}$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out in $\mathcal{F}$.
+\impl But in order to halt $P(P)$ will have to find a proof of $\infi{G}$ = <<$P(P)$ doesn't halt>>, not $\neg \infi{G}$ (uh-oh).
+\impl $P(P)$ doesn't halt despite the fact that this is exactly what $\neg \infi{G}$ = <<$P(P)$ halts>> asserts.
 \impl $\mathcal{F}$ is dishonest. \lightning
 \end{itemize}
 \end{description}
@@ -298,13 +300,13 @@ I now claim that <<$P(P)$ doesn't halt>> is undecidable in $\mathcal{F}$. Let's 
 
 Is anybody else experiencing déjà vu? Note that, whereas in the previous proof we only established the \textit{existence} of undecidable sentences in $\mathcal{F}$, here we actually have a concrete undecidable sentence on our hands. And we didn't even need the Halting Problem!
 
-Moreover, almost miraculously, the two cases for $\ddot{G}$'s provability run into the exact same problems as $G$. In the first case $\mathcal{F}$ plants its $\mathcal{F}$ace squarely in inconsistency. In the second one the precise correlation between the information that $\mathcal{F}$ communicated and the facts insofar as they can be determined and demonstrated is such as to cause epistemological problems of sufficient magnitude as to lay upon the logical and semantic resources of the English language a heavier burden than they can reasonably be expected to bear. It told a lie.\cite{yes-prime-minister}
+Moreover, almost miraculously, the two cases for $\infi{G}$'s provability run into the exact same problems as $G$. In the first case $\mathcal{F}$ plants its $\mathcal{F}$ace squarely in inconsistency. In the second one the precise correlation between the information that $\mathcal{F}$ communicated and the facts insofar as they can be determined and demonstrated is such as to cause epistemological problems of sufficient magnitude as to lay upon the logical and semantic resources of the English language a heavier burden than they can reasonably be expected to bear. It told a lie.\cite{yes-prime-minister}
 
 Upon closer inspection, we're even dealing with the same kind of lie:
 \begin{center}
 $\mathghost$ sub-inconsistency $\mathghost$
 \end{center}
-After all, if $\ddot{G}$ isn't provable, then one can still prove that $P(P)$ hasn't halted after $n$ steps for every $n\in\mathbb{N}$ by just writing out $n$ steps of the computation in $\mathcal{F}$ and noting that it's still running. But the summarizing sentence <<$P(P)$ hasn't halted after $n$ steps for any $n\in\mathbb{N}$>> = $\ddot{G}$ is mysteriously absent. If $\mathcal{F}$ then goes on to prove $\neg \ddot{G}$ = <<$P(P)$ halts>>, this will be a false promise. Yet we're unable to catch it red-handed.
+After all, if $\infi{G}$ isn't provable, then one can still prove that $P(P)$ hasn't halted after $n$ steps for every $n\in\mathbb{N}$ by just writing out $n$ steps of the computation in $\mathcal{F}$ and noting that it's still running. But the summarizing sentence <<$P(P)$ hasn't halted after $n$ steps for any $n\in\mathbb{N}$>> = $\infi{G}$ is mysteriously absent. If $\mathcal{F}$ then goes on to prove $\neg \infi{G}$ = <<$P(P)$ halts>>, this will be a false promise. Yet we're unable to catch it red-handed.
 
 And if you thought that was neat, just wait until you see Rosser's trick. As you may recall, this one worked by patching the asymmetry between the two cases in Gödel's original argument. Let's see what happens if we try the same here.
 
@@ -328,35 +330,35 @@ $B(A)$@\footnotemark@ {
 }
 \end{lstlisting}
 \end{minipage}
-\footnotetext{I picked the letters $P$ and $B$ because they visually somewhat resemble the programs they denote. (Also, this is why I placed the ``doesn't halt" case first.)}In a sense we've seen this algorithm before. Just take $H$ as it's defined in the first proof of Theorem \ref{original-first-by-computation}, substitute it into $\overline{H}$ and simplify. It's $\mathcal{F}$'s most valiant attempt to implement $\overline{H}$. This time our undecidable sentence is (you guessed it) $\ddot{R}$ = <<$B(B)$ doesn't halt>>.
+\footnotetext{I picked the letters $P$ and $B$ because they visually somewhat resemble the programs they denote. (Also, this is why I placed the ``doesn't halt" case first.)}In a sense we've seen this algorithm before. Just take $H$ as it's defined in the first proof of Theorem \ref{original-first-by-computation}, substitute it into $\overline{H}$ and simplify. It's $\mathcal{F}$'s most valiant attempt to implement $\overline{H}$. This time our undecidable sentence is (you guessed it) $\infi{R}$ = <<$B(B)$ doesn't halt>>.
 \begin{description}
-\nameditem{Suppose $\ddot{R}$ is provable:}
+\nameditem{Suppose $\infi{R}$ is provable:}
 \begin{description}
-\impl There exists some shortest proof $\ddot{r}$ of $\ddot{R}$.
-\nameditem{Either there is a proof of $\neg \ddot{R}$ that's shorter than $\ddot{r}$:}
+\impl There exists some shortest proof $\infi{r}$ of $\infi{R}$.
+\nameditem{Either there is a proof of $\neg \infi{R}$ that's shorter than $\infi{r}$:}
 \begin{itemize}
 \impl $\mathcal{F}$ is inconsistent. \lightning
 \end{itemize}
 \nameditem{Or there isn't:}
 \begin{itemize}
-\impl $B(B)$ will go through all strings shorter than $\ddot{r}$ and determine that none of them are a proof of $\neg \ddot{R}$.
-\impl We can write out this computation in $\mathcal{F}$ and point out that $B(B)$ will then find $\ddot{r}$ and enter a terminal state.
-\impl This gives a (longer) proof of <<$B(B)$ halts>> = $\neg \ddot{R}$.
+\impl $B(B)$ will go through all strings shorter than $\infi{r}$ and determine that none of them are a proof of $\neg \infi{R}$.
+\impl We can write out this computation in $\mathcal{F}$ and point out that $B(B)$ will then find $\infi{r}$ and enter a terminal state.
+\impl This gives a (longer) proof of <<$B(B)$ halts>> = $\neg \infi{R}$.
 \impl $\mathcal{F}$ is inconsistent. \lightning
 \end{itemize}
 \end{description}
-\nameditem{Suppose $\neg \ddot{R}$ is provable:}
+\nameditem{Suppose $\neg \infi{R}$ is provable:}
 \begin{description}
-\impl There exists some shortest proof $\ddot{r}'$ of $\neg \ddot{R}$.
-\nameditem{Either there is a proof of $\ddot{R}$ that's shorter than $\ddot{r}'$:}
+\impl There exists some shortest proof $\infi{r}'$ of $\neg \infi{R}$.
+\nameditem{Either there is a proof of $\infi{R}$ that's shorter than $\infi{r}'$:}
 \begin{itemize}
 \impl $\mathcal{F}$ is inconsistent. \lightning
 \end{itemize}
 \nameditem{Or there isn't:}the
 \begin{itemize}
-\impl $B(B)$ will go through all strings shorter than $\ddot{r}'$ and determine that none of them are a proof of $\ddot{R}$.
-\impl We can write out this computation in $\mathcal{F}$ and point out that $B(B)$ will then find $\ddot{r}'$ and enter an infinite loop.\footnote{Proving that a program runs forever raises the specter ($\mathghost$) of sub-inconsistency. But rest assured. Any formal system capable of reasoning about algorithms can prove that ``\lstinline{while true} \{\}" runs forever; otherwise it ought to be ashamed of itself.}
-\impl This gives a (longer) proof of <<$B(B)$ doesn't halt>> = $\ddot{R}$.
+\impl $B(B)$ will go through all strings shorter than $\infi{r}'$ and determine that none of them are a proof of $\infi{R}$.
+\impl We can write out this computation in $\mathcal{F}$ and point out that $B(B)$ will then find $\infi{r}'$ and enter an infinite loop.\footnote{Proving that a program runs forever raises the specter ($\mathghost$) of sub-inconsistency. But rest assured. Any formal system capable of reasoning about algorithms can prove that ``\lstinline{while true} \{\}" runs forever; otherwise it ought to be ashamed of itself.}
+\impl This gives a (longer) proof of <<$B(B)$ doesn't halt>> = $\infi{R}$.
 \impl $\mathcal{F}$ is inconsistent. \lightning
 \end{itemize}
 \end{description}
@@ -377,9 +379,9 @@ We could continue using $B$ for the Second Incompleteness Theorem. But that woul
 Let's assume for the purpose of contradiction that $\mathcal{F}$ can prove its own consistency
 \begin{itemize}
 \impl The first half of our new proof for the First Incompleteness Theorem can be read as a proof by contradiction that if $\mathcal{F}$ is \textit{consistent}, then $P(P)$ doesn't halt.
-\impl Using the fact that <<$P(P)$ doesn't halt>> = $\ddot{G}$ this can be stated more concisely as ``$\mathcal{F}$ is consistent $\implies$ $\ddot{G}$".
-\impl Now we simply observe (with some faith) that there wasn't actually anything in the reasoning we used to prove this that we couldn't carry out just as well in $\mathcal{F}$. So <<$\mathcal{F}$ is consistent $\implies$ $\ddot{G}$>> is actually a theorem in $\mathcal{F}$.
-\impl We're assuming that $\mathcal{F}$ can prove <<$\mathcal{F}$ is consistent>>. So by modus ponens $\mathcal{F}$ can also prove $\ddot{G}$.
+\impl Using the fact that <<$P(P)$ doesn't halt>> = $\infi{G}$ this can be stated more concisely as ``$\mathcal{F}$ is consistent $\implies$ $\infi{G}$".
+\impl Now we simply observe (with some faith) that there wasn't actually anything in the reasoning we used to prove this that we couldn't carry out just as well in $\mathcal{F}$. So <<$\mathcal{F}$ is consistent $\implies$ $\infi{G}$>> is actually a theorem in $\mathcal{F}$.
+\impl We're assuming that $\mathcal{F}$ can prove <<$\mathcal{F}$ is consistent>>. So by modus ponens $\mathcal{F}$ can also prove $\infi{G}$.
 \impl But then $P(P)$ will eventually find this proof and halt. \lightning
 \end{itemize}
 \end{proof}
@@ -388,11 +390,11 @@ Let's assume for the purpose of contradiction that $\mathcal{F}$ can prove its o
 
 At this point I can't even tell the difference between the classical approach and the algorithmic retelling anymore. Can you? All these proofs are exactly the same as before! In fact, the relation is so strong that I was able to write the latter ones by copy-pasting wholesale and then tinkering a little. Clearly, this can't be coincidence. There must be a deeper reason for this overabundance of similarities. And there is. Perhaps you've already caught on long ago. Or perhaps Clark Kent's glasses fooled you too. Drum whirl please.
 
-Recall once more what $\ddot{G}$ says. It says ``$P(P)$ doesn't halt". But $P(P)$ isn't just executing some simple infinite loop. It's looking for something. It's scouring the proofs in $\mathcal{F}$ for a proof of <<$P(P)$ doesn't halt>> = $\ddot{G}$. $\ddot{G}$'s claim that $P(P)$ will never find a proof of $\ddot{G}$ is echoing $G$'s claim that the original computers, \textit{you and me}, will never find a proof of $G$. In other words, $\ddot{G}$ is also proclaiming to the world:
+Recall once more what $\infi{G}$ says. It says ``$P(P)$ doesn't halt". But $P(P)$ isn't just executing some simple infinite loop. It's looking for something. It's scouring the proofs in $\mathcal{F}$ for a proof of <<$P(P)$ doesn't halt>> = $\infi{G}$. $\infi{G}$'s claim that $P(P)$ will never find a proof of $\infi{G}$ is echoing $G$'s claim that the original computers, \textit{you and me}, will never find a proof of $G$. In other words, $\infi{G}$ is also proclaiming to the world:
 \begin{center}
 ``I am not provable!"
 \end{center}
-Exercise: Take off $\ddot{R}$'s glasses as well.
+Exercise: Take off $\infi{R}$'s glasses as well.
 
 This means I could've organized this presentation very differently. I could've just made these observations right away and then said: ``Now reread the first section. \scalebox{0.9}{$\square$}". I've been wasting your time!
 
