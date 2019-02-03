@@ -354,7 +354,7 @@ $B(A)$@\footnotemark@ {
 \begin{itemize}
 \impl $\mathcal{F}$ is inconsistent. \lightning
 \end{itemize}
-\nameditem{Or there isn't:}the
+\nameditem{Or there isn't:}
 \begin{itemize}
 \impl $B(B)$ will go through all strings shorter than $\infi{r}'$ and determine that none of them are a proof of $\infi{R}$.
 \impl We can write out this computation in $\mathcal{F}$ and point out that $B(B)$ will then find $\infi{r}'$ and enter an infinite loop.\footnote{Proving that a program runs forever raises the specter ($\mathghost$) of sub-inconsistency. But rest assured. Any formal system capable of reasoning about algorithms can prove that ``\lstinline{while true} \{\}" runs forever; otherwise it ought to be ashamed of itself.}
@@ -406,17 +406,17 @@ Gödel was programming the integers. That is that. And he didn't even know it at
 Elementary arithmetic is Turing complete.
 \end{theorem}
 
-I'll have to leave the exact formulation of this theorem to smarter people. After all, I did recently score in the bottom 7\% of the GRE's analytical writing section (come on!). The incompleteness theorems for elementary arithmetic can then be recovered from:
+I'll have to leave the exact formulation of this theorem to smarter people. After all, I did recently score in the bottom 7\% of the GRE's analytical writing section (come on!). The upshot is that this allows us to easily recover the incompleteness theorems for elementary arithmetic from a more general insight:
 
-\begin{theorem}
-The incompleteness theorems apply to every formal system capable of reasoning about a Turing complete domain.
+\begin{theorem}[Turing Incompleteness Theorem]
+Any formal system capable of reasoning about a Turing complete domain can reason about algorithms. Thereby, the incompleteness theorems apply to it. In slogan form: if it's complete, then it's incomplete.
 \end{theorem}
 
 \begin{proof}
 One simply has to encode algorithms $P$ and $B$ into the domain and reiterate the previous arguments.
 \end{proof}
 
-Elementary arithmetic is thus just one further entry in the long list containing the Game of Life, Fractran, Post Tag Systems, Magic the Gathering, ...\\[2em]
+As a consequence computational and logical undecidability go hand in hand. And elementary arithmetic is just one further entry in the long list containing the Game of Life, \scalebox{0.95}{Fractran}, \scalebox{0.9}{Post Tag Systems}, \scalebox{0.85}{Magic the Gathering}, \scalebox{0.8}{the human brain}, \scalebox{0.75}{Rule 110}, \scalebox{0.7}{Power Point}, \scalebox{0.65}{musical notation}, \scalebox{0.6}{...}\\[2em]
 \footnotesize{(Thank you so much for your attention! The cake I promised in the abstract is on its way. Please stand by.) $\mathghost$}
 
 \begin{thebibliography}{1}
