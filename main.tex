@@ -94,7 +94,7 @@ But honesty is a stronger assumption than consistency. An honest formal system i
 
 Imagine I'm the leader of an idyllic communist utopia. Everything is going according to five-year plan. Except one day one of my nuclear reactors suddenly catches on fire. If I then tell the world community that there's nothing to worry about, this will merely be a lie, not a contradiction. Even once Swedish scientists begin smelling the fire my excuses, while fabricated, can still remain \textit{internally} consistent. It's only when I finally confess to my mishap that I contradict myself. At that point I have given two directly contradictory accounts. Now even those without a Geiger counter can tell that I've been dishonest.
 
-Disorienting as it may be, this dishonest-yet-consistent state can also occur in formal systems. Most important for our purposes, it is conceivable that we can prove $\neg G =$ <<$G$ is provable>> while $G$ in fact \textit{isn't} provable. This would lead to a curious situation I'll call \textit{sub-inconsistency}\footnote{Also known under the name ``\textit{$\omega$-inconsistency}". Let's spare our horses.} where for any $n\in\mathbb{N}$ the sentence <<$G$ doesn't have a proof shorter than $n$>> can be proven in $\mathcal{F}$ by just going through all possible proofs up to length $n$ and pointing out that none of them do the trick. Yet the summarizing sentence <<$G$ doesn't have a proof shorter than $n$ for any $n\in\mathbb{N}$>> = $G$ is not only unprovable but flat out contradicted by $\neg G$. This is why Gödel had to assume honesty (or at least \textit{super-consistency}) in his original proof. Basically, he had to press $\mathcal{F}$ up against the wall and shout: ``No games, dammit!"
+Disorienting as it may be, this dishonest-yet-consistent state can also occur in formal systems. Most important for our purposes, it is conceivable that we can prove $\neg G =$ <<$G$ is provable>> while $G$ in fact \textit{isn't} provable. This would lead to a curious situation I'll call \textit{sub-inconsistency}\footnote{Also known under the name ``\textit{$\omega$-inconsistency}". Let's spare our horses.} where for any $n\in\mathbb{N}$ the sentence <<$G$ doesn't have a proof shorter than $n$>> can be proven in $\mathcal{F}$ by just going through all possible proofs up to length $n$ and pointing out that none of them do the trick. Yet the sentence with the ``for any $n\in\mathbb{N}$" on the inside, <<$G$ doesn't have a proof shorter than $n$ for any $n\in\mathbb{N}$>> = $G$, is not only unprovable but flat out contradicted by $\neg G$. This is why Gödel had to assume honesty (or at least \textit{super-consistency}) in his original proof. Basically, he had to press $\mathcal{F}$ up against the wall and shout: ``No games, dammit!"
 
 Okay, but isn't there a less violent way to prevent this kind of sub-terfuge? Indeed there is. In 1936 J. Barkley Rosser found a way to demonstrate the improved
 
@@ -296,7 +296,7 @@ Upon closer inspection, we're even dealing with the same kind of lie:
 \begin{center}
 $\mathghost$ sub-inconsistency $\mathghost$
 \end{center}
-After all, if $\infi{G}$ isn't provable, then one can still prove that $P(P)$ hasn't halted after $n$ steps for every $n\in\mathbb{N}$ by just writing out $n$ steps of the computation in $\mathcal{F}$ and noting that it's still running. But the summarizing sentence <<$P(P)$ hasn't halted after $n$ steps for any $n\in\mathbb{N}$>> = $\infi{G}$ is mysteriously absent. If $\mathcal{F}$ then goes on to prove $\neg \infi{G}$ = <<$P(P)$ halts>>, this will be a false promise. Yet we're unable to catch it red-handed.
+After all, if $\infi{G}$ isn't provable, then one can still prove that $P(P)$ hasn't halted after $n$ steps for any $n\in\mathbb{N}$ by just writing out $n$ steps of the computation in $\mathcal{F}$ and noting that it's still running. But the summarizing sentence <<$P(P)$ hasn't halted after $n$ steps for any $n\in\mathbb{N}$>> = $\infi{G}$ is mysteriously absent. If $\mathcal{F}$ then goes on to prove $\neg \infi{G}$ = <<$P(P)$ halts>>, this will be a false promise. Yet we're unable to catch it red-handed.
 
 And if you thought that was neat, just wait until you see Rosser's trick. As you may recall, this one worked by patching the asymmetry between the two cases in Gödel's original argument. Let's see what happens if we try the same here.
 
@@ -329,7 +329,7 @@ In a sense we've seen this algorithm before. Just take $H$ as it's defined in th
 \begin{itemize}
 \impl $B(B)$ will go through all strings shorter than $p$ and determine that none of them are a proof of $\neg \infi{R}$.
 \impl We can write out this computation in $\mathcal{F}$ and point out that $B(B)$ will then find $p$ and enter a terminal state.
-\impl This gives a (longer) proof of <<$B(B)$ halts>> = $\neg \infi{R}$.
+\impl This allows us to construct a (longer) proof of <<$B(B)$ halts>> = $\neg \infi{R}$.
 \impl $\mathcal{F}$ is inconsistent. \lightning
 \end{itemize}
 \end{description}
@@ -344,7 +344,7 @@ In a sense we've seen this algorithm before. Just take $H$ as it's defined in th
 \begin{itemize}
 \impl $B(B)$ will go through all strings shorter than $p$ and determine that none of them are a proof of $\infi{R}$.
 \impl We can write out this computation in $\mathcal{F}$ and point out that $B(B)$ will then find $p$ and enter an infinite loop.\footnote{Proving that a program runs forever raises the specter ($\mathghost$) of sub-inconsistency. But rest assured. Any formal system capable of reasoning about algorithms can prove that ``\lstinline{while true} \{\}" runs forever. Otherwise it ought to be ashamed of itself.}
-\impl This gives a (longer) proof of <<$B(B)$ doesn't halt>> = $\infi{R}$.
+\impl This allows us to construct a (longer) proof of <<$B(B)$ doesn't halt>> = $\infi{R}$.
 \impl $\mathcal{F}$ is inconsistent. \lightning
 \end{itemize}
 \end{description}
