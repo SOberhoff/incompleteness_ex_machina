@@ -185,14 +185,11 @@ There's no algorithm that can determine for another arbitrary algorithm $A$ whet
 Suppose $H$ solves the Halting Problem. Then one could create the following algorithm:\\[0.5em]
 \begin{minipage}{\linewidth}
 \begin{lstlisting}
-$\overline{H}(A)$ {
-  if $H(A)$ rejects {
-    halt;
-  }
-  if $H(A)$ accepts {
-    infinite loop;
-  }
-}
+$\overline{H}(A)$
+  if $H(A)$ rejects
+    halt
+  if $H(A)$ accepts
+    infinite loop
 \end{lstlisting}
 \end{minipage}
 Question: does $\overline{H}(\overline{H})$ halt?\\[0.5em]
@@ -228,16 +225,12 @@ Let $\mathcal{F}$ be an honest formal system capable of reasoning about algorith
 Suppose $\mathcal{F}$ was complete. Then we could solve the Halting Problem using the following algorithm:\\[0.5em]
 \begin{minipage}{\linewidth}
 \begin{lstlisting}
-$H(A)$ {
-  for $s$ $\in$ all possible strings @\footnotemark@ {
-    if $s$ proves @<<@$A(A)$ doesn't halt@>>@ {
-      reject;
-    }
-    if $s$ proves @<<@$A(A)$ halts@>>@ {
-      accept;
-    }
-  }
-}
+$H(A)$
+  for $s$ $\in$ all possible strings @\footnotemark@
+    if $s$ proves @<<@$A(A)$ doesn't halt@>>@
+      reject
+    if $s$ proves @<<@$A(A)$ halts@>>@
+      accept
 \end{lstlisting}
 \end{minipage}
 \footnotetext{If it wasn't clear: we're iterating in increasing length. This procedure is sometimes also jokingly referred to as the \textit{British Museum algorithm} because  it's akin to using chimps in front of typewriters in an attempt to reproduce all the books in the British Museum.}Because $\mathcal{F}$ is complete this search will eventually hit upon a proof of  either <<$A(A)$ halts>> or <<$A(A)$ doesn't halt>>. And because $\mathcal{F}$ is honest, we'll be able to trust its judgment. That determines whether or not $A(A)$ halts. But, as we saw only a moment ago, it's impossible to solve the Halting Problem. So $\mathcal{F}$ couldn't have been complete.
@@ -258,13 +251,10 @@ We can do better. Watch this:
 Consider the following algorithm:\\[0.5em]
 \begin{minipage}{\linewidth}
 \begin{lstlisting}
-$P(A)$ {
-  for $s$ $\in$ all possible strings {
-    if $s$ proves @<<@$A(A)$ doesn't halt@>>@ {
-      halt;
-    }
-  }
-}
+$P(A)$
+  for $s$ $\in$ all possible strings
+    if $s$ proves @<<@$A(A)$ doesn't halt@>>@
+      halt
 \end{lstlisting}
 \end{minipage}
 I now claim that <<$P(P)$ doesn't halt>> is undecidable in $\mathcal{F}$. Let's call this sentence $\infi{G}$ because it's the perfect analogue of Gödel's $G$. The critical new feature of $\infi{G}$ is that its construction has become just a small matter of programming. If we go through the alternatives, we find:
@@ -318,16 +308,12 @@ Let $\mathcal{F}$ be a consistent formal system capable of reasoning about algor
 Consider the following algorithm:\\[0.5em]
 \begin{minipage}{\linewidth}
 \begin{lstlisting}
-$B(A)$@\footnotemark@ {
-  for $s$ $\in$ all possible strings {
-    if $s$ proves @<<@$A(A)$ doesn't halt@>>@ {
-      halt;
-    }
-    if $s$ proves @<<@$A(A)$ halts@>>@ {
-      infinite loop;
-    }
-  }
-}
+$B(A)$@\footnotemark@
+  for $s$ $\in$ all possible strings
+    if $s$ proves @<<@$A(A)$ doesn't halt@>>@
+      halt
+    if $s$ proves @<<@$A(A)$ halts@>>@
+      infinite loop
 \end{lstlisting}
 \end{minipage}
 \footnotetext{I picked the letters $P$ and $B$ because they visually somewhat resemble the programs they denote. (Also, this is why I placed the ``doesn't halt" case first.)}In a sense we've seen this algorithm before. Just take $H$ as it's defined in the first proof of Theorem \ref{original-first-by-computation}, substitute it into $\overline{H}$ and simplify. It's $\mathcal{F}$'s most valiant attempt to implement $\overline{H}$. This time our undecidable sentence is (you guessed it) $\infi{R}$ = <<$B(B)$ doesn't halt>>.
