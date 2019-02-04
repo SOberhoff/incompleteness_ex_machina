@@ -189,7 +189,7 @@ $\overline{H}(A)$
   if $H(A)$ rejects
     halt
   if $H(A)$ accepts
-    infinite loop
+    loop
 \end{lstlisting}
 \end{minipage}
 Question: does $\overline{H}(\overline{H})$ halt?\\[0.5em]
@@ -313,7 +313,7 @@ $B(A)$@\footnotemark@
     if $s$ proves @<<@$A(A)$ doesn't halt@>>@
       halt
     if $s$ proves @<<@$A(A)$ halts@>>@
-      infinite loop
+      loop
 \end{lstlisting}
 \end{minipage}\footnotetext{I picked the letters $P$ and $B$ because they visually somewhat resemble the programs they denote. (Also, this is why I placed the ``doesn't halt" case first.)}
 In a sense we've seen this algorithm before. Just take $H$ as it's defined in the first proof of Theorem \ref{original-first-by-computation}, substitute it into $\overline{H}$ and simplify. It's $\mathcal{F}$'s most valiant attempt to implement $\overline{H}$. This time our undecidable sentence is (you guessed it) $\infi{R}$ = <<$B(B)$ doesn't halt>>.
