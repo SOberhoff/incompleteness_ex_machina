@@ -1,7 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amsthm, amsfonts}
-\usepackage{listings}
 \usepackage{halloweenmath}
 \usepackage{lmodern}
 \usepackage{wasysym}
@@ -11,8 +10,10 @@
 \usepackage{epigraph}
 \usepackage{enumitem}
 \usepackage{accents}
+\usepackage{caption}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 
-\theoremstyle{theorem}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 
@@ -20,7 +21,8 @@
 \newcommand{\impl}{\item[$\Rightarrow$]}
 \newcommand{\infi}[1]{\accentset{\scalebox{0.35}{$\infty$}}{#1}}
 
-\lstset{mathescape=true, escapechar=@, morekeywords={for, if, return, while, true, false}, frame=tb}
+\renewcommand\algorithmicthen{}
+\renewcommand\algorithmicdo{}
 
 \begin{document}
 
@@ -182,16 +184,18 @@ There's no algorithm that can determine for another arbitrary algorithm $A$ whet
 \end{lemma}
 
 \begin{proof}
-Suppose $H$ solves the Halting Problem. Then one could create the following algorithm:\\[0.5em]
-\begin{minipage}{\linewidth}
-\begin{lstlisting}
-$\overline{H}(A)$
-  if $H(A)$ rejects
-    halt
-  if $H(A)$ accepts
-    loop
-\end{lstlisting}
-\end{minipage}
+Suppose $H$ solves the Halting Problem. Then one could create the following algorithm:
+\begin{algorithm}[H]
+\caption*{$\overline{H}(A)$}
+\begin{algorithmic}
+\If{$H(A)$ rejects}
+  \State halt
+\EndIf
+\If{$H(A)$ accepts}
+  \State loop
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 Question: does $\overline{H}(\overline{H})$ halt?\\[0.5em]
 \begin{minipage}{0.5\textwidth}
 \begin{description}[noitemsep]
@@ -222,17 +226,20 @@ Let $\mathcal{F}$ be an honest formal system capable of reasoning about algorith
 \end{theorem}
 
 \begin{proof}
-Suppose $\mathcal{F}$ was complete. Then we could solve the Halting Problem using the following algorithm:\\[0.5em]
-\begin{minipage}{\linewidth}
-\begin{lstlisting}
-$H(A)$
-  for $s$ $\in$ all possible strings @\footnotemark@
-    if $s$ proves @<<@$A(A)$ doesn't halt@>>@
-      reject
-    if $s$ proves @<<@$A(A)$ halts@>>@
-      accept
-\end{lstlisting}
-\end{minipage}
+Suppose $\mathcal{F}$ was complete. Then we could solve the Halting Problem using the following algorithm:
+\begin{algorithm}[H]
+\caption*{$H(A)$}
+\begin{algorithmic}
+\For{$x\in$ all possible strings\footnote{If it wasn't clear: we're iterating in increasing length. This procedure is sometimes also jokingly referred to as the \textit{British Museum algorithm} because  it's akin to using chimps in front of typewriters in an attempt to reproduce all the books in the British Museum.}}
+  \If{$x$ proves <<$A(A)$  doesn't halt>>}
+    \State reject
+  \EndIf
+  \If{$x$ proves <<$A(A)$ halts>>}
+    \State accept
+  \EndIf
+\EndFor
+\end{algorithmic}
+\end{algorithm}
 \footnotetext{If it wasn't clear: we're iterating in increasing length. This procedure is sometimes also jokingly referred to as the \textit{British Museum algorithm} because  it's akin to using chimps in front of typewriters in an attempt to reproduce all the books in the British Museum.}Because $\mathcal{F}$ is complete this search will eventually hit upon a proof of  either <<$A(A)$ halts>> or <<$A(A)$ doesn't halt>>. And because $\mathcal{F}$ is honest, we'll be able to trust its judgment. That determines whether or not $A(A)$ halts. But, as we saw only a moment ago, it's impossible to solve the Halting Problem. So $\mathcal{F}$ couldn't have been complete.
 \end{proof}
 
@@ -248,15 +255,17 @@ Nevertheless, this isn't the proof I want to use going forward. The reasons are 
 \end{itemize}
 We can do better. Watch this:
 \begin{proof}
-Consider the following algorithm:\\[0.5em]
-\begin{minipage}{\linewidth}
-\begin{lstlisting}
-$P(A)$
-  for $s$ $\in$ all possible strings
-    if $s$ proves @<<@$A(A)$ doesn't halt@>>@
-      halt
-\end{lstlisting}
-\end{minipage}
+Consider the following algorithm:
+\begin{algorithm}[H]
+\caption*{$P(A)$}
+\begin{algorithmic}
+\For{$x\in$ all possible strings}
+  \If{$x$ proves <<$A(A)$ doesn't halt>>}
+    \State halt
+  \EndIf
+\EndFor
+\end{algorithmic}
+\end{algorithm}
 I now claim that <<$P(P)$ doesn't halt>> is undecidable in $\mathcal{F}$. Let's call this sentence $\infi{G}$ because it's the perfect analogue of Gödel's $G$. The critical new feature of $\infi{G}$ is that its construction has become just a small matter of programming. If we go through the alternatives, we find:
 \begin{description}
 \nameditem{Suppose $\infi{G}$ is provable:}
@@ -305,17 +314,20 @@ Let $\mathcal{F}$ be a consistent formal system capable of reasoning about algor
 \end{theorem}
 
 \begin{proof}
-Consider the following algorithm:\\[0.5em]
-\begin{minipage}{\linewidth}
-\begin{lstlisting}
-$B(A)$@\footnotemark@
-  for $s$ $\in$ all possible strings
-    if $s$ proves @<<@$A(A)$ doesn't halt@>>@
-      halt
-    if $s$ proves @<<@$A(A)$ halts@>>@
-      loop
-\end{lstlisting}
-\end{minipage}\footnotetext{I picked the letters $P$ and $B$ because they visually somewhat resemble the programs they denote. (Also, this is why I placed the ``doesn't halt" case first.)}
+Consider the following algorithm:
+\begin{algorithm}[H]
+\caption*{$B(A)$\footnote{I picked the letters $P$ and $B$ because they visually somewhat resemble the programs they denote. (Also, this is why I placed the ``doesn't halt" case first.)}}
+\begin{algorithmic}
+\For{$x\in$ all possible strings}
+  \If{$x$ proves <<$A(A)$ doesn't halt>>}
+    \State halt
+  \EndIf
+  \If{$x$ proves <<$A(A)$ halts>>}
+    \State loop
+  \EndIf
+\EndFor
+\end{algorithmic}
+\end{algorithm}
 In a sense we've seen this algorithm before. Just take $H$ as it's defined in the first proof of Theorem \ref{original-first-by-computation}, substitute it into $\overline{H}$ and simplify. It's $\mathcal{F}$'s most valiant attempt to implement $\overline{H}$. This time our undecidable sentence is (you guessed it) $\infi{R}$ = <<$B(B)$ doesn't halt>>.
 \begin{description}
 \nameditem{Suppose $\infi{R}$ is provable:}
@@ -343,7 +355,7 @@ In a sense we've seen this algorithm before. Just take $H$ as it's defined in th
 \nameditem{Or there isn't:}
 \begin{itemize}
 \impl $B(B)$ will go through all strings shorter than $p$ and determine that none of them are a proof of $\infi{R}$.
-\impl We can write out this computation in $\mathcal{F}$ and point out that $B(B)$ will then find $p$ and enter an infinite loop.\footnote{Proving that a program runs forever raises the specter ($\mathghost$) of sub-inconsistency. But rest assured. Any formal system capable of reasoning about algorithms can prove that ``\lstinline{while true} \{\}" runs forever. Otherwise it ought to be ashamed of itself.}
+\impl We can write out this computation in $\mathcal{F}$ and point out that $B(B)$ will then find $p$ and enter an infinite loop.\footnote{Proving that a program runs forever raises the specter ($\mathghost$) of sub-inconsistency. But rest assured. Any formal system capable of reasoning about algorithms can prove that ``\textbf{while true} \{\}" runs forever. Otherwise it ought to be ashamed of itself.}
 \impl This allows us to construct a (longer) proof of <<$B(B)$ doesn't halt>> = $\infi{R}$.
 \impl $\mathcal{F}$ is inconsistent. \lightning
 \end{itemize}
