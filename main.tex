@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage[letterpaper, margin=2.5cm]{geometry}
+\usepackage[letterpaper, margin=2cm]{geometry}
 \usepackage{lmodern}
 \usepackage[euler-digits, euler-hat-accent]{eulervm}
 \usepackage{amsmath, amsthm, amsfonts}
@@ -12,6 +12,10 @@
 \usepackage{accents}
 \usepackage{caption}
 \usepackage[noend]{algpseudocode}
+\usepackage{float}
+\usepackage{tikz}
+
+\usetikzlibrary{patterns}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
@@ -34,7 +38,7 @@
 
 \begin{document}
 
-\title{\vspace{-2.0cm}Incompleteness Ex Machina}
+\title{\vspace{-1cm}Incompleteness Ex Machina}
 \author{Sebastian Oberhoff\\{\small oberhoff.sebastian@gmail.com}}
 \date{\today\\{\small (originally published December 31, 2018)}}
 
@@ -47,6 +51,49 @@ In this essay we'll prove Gödel's incompleteness theorems twice. First, we'll p
 \setlength{\epigraphwidth}{\textwidth}
 
 \epigraph{It is a profoundly erroneous truism, repeated by all copy-books and by eminent people when they are making speeches, that we should cultivate the habit of thinking of what we are doing. The precise opposite is the case. Civilization advances by extending the number of important operations which we can perform without thinking about them. Operations of thought are like cavalry charges in a battle---they are strictly limited in number, they require fresh horses, and must only be made at decisive moments. }{\textit{Alfred North Whitehead}}
+
+\vspace{-5cm}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.75]
+  \draw[pattern=north west lines, pattern color=lightgray, thick] (-9cm, -9cm) rectangle (9cm, 9cm);
+
+  \draw[thick] (0cm, 0cm) circle (8cm);
+
+  \begin{scope}
+    \clip (0cm, -8cm) rectangle (8cm, 16cm);
+    \draw[fill=gray] (0cm, 0cm) circle (8cm);
+  \end{scope}
+  \begin{scope}
+    \clip (0cm, -8cm) rectangle (-8cm, 16cm);
+    \draw[fill=white] (0cm, 0cm) circle (8cm);
+  \end{scope}
+
+  \begin{scope}
+    \clip (0, 0) rectangle (-4cm, 8cm);
+    \draw[fill=gray, thick] (0cm, 4cm) circle (4cm);
+  \end{scope}
+  \begin{scope}
+    \clip (0, 0) rectangle (4cm, -8cm);
+    \draw[fill=white, thick] (0cm, -4cm) circle (4cm);
+  \end{scope}
+
+  \draw[fill=white, thick] (0,4) circle (0.8cm);
+  \draw[fill=gray, thick] (0,-4) circle (0.8cm);
+  
+  \node[right] at (-9cm, -8.75cm) {All possible strings};
+  
+  \draw[dashed, bend right] (145: 8cm) to (-4cm, 4cm);
+  \node at (-5cm, 5cm) {Axioms};
+  \node at (-4cm, -2cm) {Provable};
+  \node at (0cm, 5.1cm) {True but undecidable};
+  \draw[fill] (0cm, 4cm) circle (0.05cm) node[below] {$G$};
+  
+  \node at (4cm, 2cm) {Disprovable};
+  \node at (0cm, -5.1cm) {False but undecidable};
+  \draw[fill] (0cm, -4cm) circle (0.05cm) node[above] {$\neg G$};
+\end{tikzpicture}
+\end{figure}
 
 \section{The Incompleteness Theorems On Fast-Forward}
 
