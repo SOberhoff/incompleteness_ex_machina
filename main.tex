@@ -10,7 +10,6 @@
 \usepackage{epigraph}
 \usepackage{enumitem}
 \usepackage{accents}
-\usepackage{caption}
 \usepackage[noend]{algpseudocode}
 \usepackage{float}
 \usepackage{tikz}
@@ -59,8 +58,6 @@ In this essay we'll prove Gödel's incompleteness theorems twice. First, we'll p
 \begin{tikzpicture}[scale=0.75]
   \draw[pattern=north west lines, pattern color=lightgray, thick] (-9cm, -9cm) rectangle (9cm, 9cm);
 
-  \draw[thick] (0cm, 0cm) circle (8cm);
-
   \begin{scope}
     \clip (0cm, -8cm) rectangle (8cm, 16cm);
     \draw[fill=gray] (0cm, 0cm) circle (8cm);
@@ -69,15 +66,20 @@ In this essay we'll prove Gödel's incompleteness theorems twice. First, we'll p
     \clip (0cm, -8cm) rectangle (-8cm, 16cm);
     \draw[fill=white] (0cm, 0cm) circle (8cm);
   \end{scope}
+  
+  \fill[gray] (0cm, 4cm) circle (4cm);
+  \fill[white] (0cm, -4cm) circle (4cm);
 
   \begin{scope}
-    \clip (0, 0) rectangle (-4cm, 8cm);
-    \draw[fill=gray, thick] (0cm, 4cm) circle (4cm);
+    \clip (0cm, -8cm) rectangle (-8cm, 16cm);
+    \draw[thick] (0cm, 4cm) circle (4cm);
   \end{scope}
   \begin{scope}
-    \clip (0, 0) rectangle (4cm, -8cm);
-    \draw[fill=white, thick] (0cm, -4cm) circle (4cm);
+    \clip (0cm, -8cm) rectangle (8cm, 16cm);
+    \draw[thick] (0cm, -4cm) circle (4cm);
   \end{scope}
+  
+  \draw[thick] (0cm, 0cm) circle (8cm);
 
   \draw[fill=white, thick] (0,4) circle (0.8cm);
   \draw[fill=gray, thick] (0,-4) circle (0.8cm);
