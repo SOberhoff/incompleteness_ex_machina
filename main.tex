@@ -24,15 +24,12 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 
-\newcommand{\nameditem}[1]{\item\textbf{#1}}
-\newcommand{\impl}{\item[$\Rightarrow$]}
-
 \newcommand{\F}{\ensuremath{\mathcal{F}}}
 \newcommand{\iGoedel}{\ensuremath{\accentset{\scalebox{0.35}{$\infty$}}{G}}}
 \newcommand{\iRosser}{\ensuremath{\accentset{\scalebox{0.35}{$\infty$}}{R}}}
 
-\setlist[description]{itemsep=0.25pt}
-\setlist[itemize]{itemsep=0.25pt}
+\setlist[description]{style=nextline, itemsep=0.25pt, topsep=0.25pt}
+\setlist[itemize]{style=nextline, itemsep=0.25pt, topsep=0.25pt, label={$\Rightarrow$}}
 
 \renewcommand\algorithmicfunction{}
 \renewcommand\algorithmicthen{}
@@ -106,31 +103,36 @@ Kurt Gödel's incompleteness theorems are clearly the most significant results i
 Gödel accomplished these triumphs as follows. Suppose we're given a formal system\footnote{For the purpose of this discussion every formal system is effectively axiomatized by definition. If you don't know what that means, don't worry about it.} $\F$ that is capable of reasoning about elementary arithmetic. Then, as Gödel showed through a lot of toil, it is possible to construct a sentence $G$ which essentially says ``I am not provable in $\F$''. Once he had built this sentence he then simply asked: can $G$ be proven or disproven---that is \textit{decided}---in $\F$?
 
 \begin{description}
-\nameditem{Suppose $G$ is provable:}
+\item[Suppose $G$ is provable:]
 \begin{description}
-\nameditem{Either $\neg G$ is also provable:}
+\item[]
+\item[Either $\neg G$ is also provable:]
 \begin{itemize}
-\impl Both $G$ and $\neg G$ are provable in $\F$. Any system in which such a situation arises is also called \textit{inconsistent}.
+\item[]
+\item Both $G$ and $\neg G$ are provable in $\F$. Any system in which such a situation arises is also called \textit{inconsistent}.
 \end{itemize}
-\nameditem{Or $\neg G$ isn't provable:}
+\item[Or $\neg G$ isn't provable:]
 \begin{itemize}
-\impl Because $G$ is provable there exists some concrete proof of $G$ which we can write out \textit{inside} $\F$. This is done using a device called Gödel numbering which allows numbers to talk about proofs. It's complicated.
-\impl Because this proof leads to $G$ this allows us to construct a new proof of <<$G$ is provable>>\footnote{Whereas regular quotes (``'') perform their usual function, guillemets (<<>>) surround formal sentences denoted by their English description. Also ``='' doesn't always have to mean exact equality. I also use it to relate sentences which are merely logically equivalent, provided this is obvious.} = $\neg G$\footnote{Beware: the negation of $G$ = <<$G$ isn't provable>>, denoted $\neg G$, is \textit{not} <<$\neg G$ isn't provable>>. It's <<$G$ \textit{is} provable>>. These are very different sentences. Furthermore, it's important to notice that $\neg G$ isn't being self-referential when it says ``$G$ is provable''. $\neg G$ is really more like an evil twin that's telling lies about its sibling (assuming the system $\F$  as a whole is honest).}. But we're assuming $\neg G$ \textit{isn't} provable. We have arrived at a genuine contradiction, not just an inconsistency. So this can't happen. We'll use the shorthand ``\lightning'' for this in the future.
+\item[]
+\item Because $G$ is provable there exists some concrete proof of $G$ which we can write out \textit{inside} $\F$. This is done using a device called Gödel numbering which allows numbers to talk about proofs. It's complicated.
+\item Because this proof leads to $G$ this allows us to construct a new proof of <<$G$ is provable>>\footnote{Whereas regular quotes (``'') perform their usual function, guillemets (<<>>) surround formal sentences denoted by their English description. Also ``='' doesn't always have to mean exact equality. I also use it to relate sentences which are merely logically equivalent, provided this is obvious.} = $\neg G$\footnote{Beware: the negation of $G$ = <<$G$ isn't provable>>, denoted $\neg G$, is \textit{not} <<$\neg G$ isn't provable>>. It's <<$G$ \textit{is} provable>>. These are very different sentences. Furthermore, it's important to notice that $\neg G$ isn't being self-referential when it says ``$G$ is provable''. $\neg G$ is really more like an evil twin that's telling lies about its sibling (assuming the system $\F$  as a whole is honest).}. But we're assuming $\neg G$ \textit{isn't} provable. We have arrived at a genuine contradiction, not just an inconsistency. So this can't happen. We'll use the shorthand ``\lightning'' for this in the future.
 \end{itemize}
 \end{description}
-\nameditem{Suppose $\neg G$ is provable:}
+\item[Suppose $\neg G$ is provable:]
 This is what it means to disprove $G$. Also, mind the fact that this case and the previous aren't logical opposites. That's where I use either/or.
 \begin{description}
-\nameditem{Either $G$ is also provable:}
+\item[Either $G$ is also provable:]
 \begin{itemize}
-\impl $\F$ is inconsistent.
+\item[]
+\item $\F$ is inconsistent.
 \end{itemize}
-\nameditem{Or $G$ isn't provable:}
+\item[Or $G$ isn't provable:]
 \begin{itemize}
-\impl Because $\neg G$ is provable there exists some concrete proof of $\neg G$ which we can write out \textit{inside} $\F$.
-\impl But in order to force a contradiction we'll have to find a proof of $G$ = <<$G$ isn't provable>>, not <<$\neg G$ is provable>> (uh-oh).
-\impl We can't find a proof of $G$ despite the fact that its existence is exactly what $\neg G$ = <<$G$ is provable>> asserts.
-\impl We haven't convicted $\F$ of an outright inconsistency. But something is still very, very wrong with it.
+\item[]
+\item Because $\neg G$ is provable there exists some concrete proof of $\neg G$ which we can write out \textit{inside} $\F$.
+\item But in order to force a contradiction we'll have to find a proof of $G$ = <<$G$ isn't provable>>, not <<$\neg G$ is provable>> (uh-oh).
+\item We can't find a proof of $G$ despite the fact that its existence is exactly what $\neg G$ = <<$G$ is provable>> asserts.
+\item We haven't convicted $\F$ of an outright inconsistency. But something is still very, very wrong with it.
 \end{itemize}
 \end{description}
 \end{description}
@@ -166,34 +168,38 @@ Let $\F$ be a \textbf{consistent} formal system capable of reasoning about eleme
 \begin{proof}
 In hindsight Rosser's trick is quite simple. Instead of formalizing ``I am not provable'' he formalized the sentence ``For every proof of me there exists a shorter disproof''. Let's refer to this sentence as $R$ and see how $R$ can help us.
 \begin{description}
-\nameditem{Suppose $R$ is provable:}
+\item[Suppose $R$ is provable:]
+$\Rightarrow$ There exists some shortest proof $p$ of $R$.
 \begin{description}
-\impl There exists some shortest proof $p$ of $R$.
-\nameditem{Either there is a proof of $\neg R$ that's shorter than $p$:}
+\item[Either there is a proof of $\neg R$ that's shorter than $p$:]
 \begin{itemize}
-\impl $\F$ is inconsistent. \lightning\footnote{Inconsistencies can be promoted to genuine contradictions if they collide with the assumption of consistency.}
+\item[]
+\item $\F$ is inconsistent. \lightning\footnote{Inconsistencies can be promoted to genuine contradictions if they collide with the assumption of consistency.}
 \end{itemize}
-\nameditem{Or there isn't:}
+\item[Or there isn't:]
 \begin{itemize}
-\impl We can go through all strings up to the length of $p$ and determine that none of them are a proof of $\neg R$.
-\impl We can write out this list \textit{inside} $\F$ and point out that all longer strings are at least as long as $p$.
-\impl This allows us to construct a new (longer) proof of <<There exists a proof of $R$ with no shorter disproof (namely $p$)>> = $\neg R$.
-\impl $\F$ is inconsistent. \lightning
+\item[]
+\item We can go through all strings up to the length of $p$ and determine that none of them are a proof of $\neg R$.
+\item We can write out this list \textit{inside} $\F$ and point out that all longer strings are at least as long as $p$.
+\item This allows us to construct a new (longer) proof of <<There exists a proof of $R$ with no shorter disproof (namely $p$)>> = $\neg R$.
+\item $\F$ is inconsistent. \lightning
 \end{itemize}
 \end{description}
-\nameditem{Suppose $\neg R$ is provable:}
+\item[Suppose $\neg R$ is provable:]
+$\Rightarrow$ There exists some shortest proof $p$ of $\neg R$.\footnote{The letter $p$ is being reused. This $p$ is not the same as the previous $p$.}
 \begin{description}
-\impl There exists some shortest proof $p$ of $\neg R$.\footnote{The letter $p$ is being reused. This $p$ is not the same as the previous $p$.}
-\nameditem{Either there is a proof of $R$ that's shorter than $p$:}
+\item[Either there is a proof of $R$ that's shorter than $p$:]
 \begin{itemize}
-\impl $\F$ is inconsistent. \lightning
+\item[]
+\item $\F$ is inconsistent. \lightning
 \end{itemize}
-\nameditem{Or there isn't:}
+\item[Or there isn't:]
 \begin{itemize}
-\impl We can go through all strings up to the length of $p$ and determine that none of them are a proof of $R$.
-\impl We can write out this list \textit{inside} $\F$ and point out that all longer strings are at least as long as $p$.
-\impl This allows us to construct a new (longer) proof of <<For every proof of $R$ there exists a shorter disproof (namely $p$)>> = $R$.
-\impl $\F$ is inconsistent. \lightning
+\item[]
+\item We can go through all strings up to the length of $p$ and determine that none of them are a proof of $R$.
+\item We can write out this list \textit{inside} $\F$ and point out that all longer strings are at least as long as $p$.
+\item This allows us to construct a new (longer) proof of <<For every proof of $R$ there exists a shorter disproof (namely $p$)>> = $R$.
+\item $\F$ is inconsistent. \lightning
 \end{itemize}
 \end{description}
 \end{description}
@@ -212,11 +218,11 @@ Perhaps the fact that this theorem speaks of consistency, not honesty, makes you
 \begin{proof}
 Let's assume for the purpose of contradiction that $\F$ can prove its own consistency
 \begin{itemize}
-\impl The first half of the proof for the First Incompleteness Theorem can be read as a proof by contradiction that if $\F$ is consistent, then $G$ isn't provable.
-\impl Using the fact that <<$G$ isn't provable>> = $G$ this can be stated more concisely as ``$\F$ is consistent $\implies G$''.
-\impl As Gödel himself pointed out with some hand-waving, there wasn't actually anything in the reasoning we used to prove this that we couldn't carry out just as well in $\F$. So <<$\F$ is consistent $\implies G$>> is actually a theorem in $\F$.
-\impl We're assuming that $\F$ can prove <<$\F$ is consistent>>. So by modus ponens\footnote{Modus ponens is the inference rule that from $A$ and <<$A \implies B$>> follows $B$.} $\F$ can also prove $G$.
-\impl But $G$ can't be proven. \lightning
+\item The first half of the proof for the First Incompleteness Theorem can be read as a proof by contradiction that if $\F$ is consistent, then $G$ isn't provable.
+\item Using the fact that <<$G$ isn't provable>> = $G$ this can be stated more concisely as ``$\F$ is consistent $\implies G$''.
+\item As Gödel himself pointed out with some hand-waving, there wasn't actually anything in the reasoning we used to prove this that we couldn't carry out just as well in $\F$. So <<$\F$ is consistent $\implies G$>> is actually a theorem in $\F$.
+\item We're assuming that $\F$ can prove <<$\F$ is consistent>>. So by modus ponens\footnote{Modus ponens is the inference rule that from $A$ and <<$A \implies B$>> follows $B$.} $\F$ can also prove $G$.
+\item But $G$ can't be proven. \lightning
 \end{itemize}
 \end{proof}
 
@@ -265,19 +271,21 @@ Suppose $H$ solves the Halting Problem. Then one could create the following algo
 ``halt'' just... halts. We don't even need to bother accepting or rejecting. It doesn't matter. And ``loop'' is a simple infinite loop with no exits. Now, question: does $\overline{H}(\overline{H})$ halt?\\[0.5em]
 \begin{minipage}{0.5\textwidth}
 \begin{description}[noitemsep]
-\nameditem{Either $\overline{H}(\overline{H})$ halts:} 
+\item[Either $\overline{H}(\overline{H})$ halts:]
 \begin{itemize}[noitemsep]
-\impl $H(\overline{H})$ accepts.
-\impl $\overline{H}(\overline{H})$ doesn't halt. \lightning
+\item[]
+\item $H(\overline{H})$ accepts.
+\item $\overline{H}(\overline{H})$ doesn't halt. \lightning
 \end{itemize}
 \end{description}
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \begin{description}[noitemsep]
-\nameditem{Or $\overline{H}(\overline{H})$ doesn't halt:} 
+\item[Or $\overline{H}(\overline{H})$ doesn't halt:]
 \begin{itemize}[noitemsep]
-\impl $H(\overline{H})$ rejects.
-\impl $\overline{H}(\overline{H})$ halts. \lightning
+\item[]
+\item $H(\overline{H})$ rejects.
+\item $\overline{H}(\overline{H})$ halts. \lightning
 \end{itemize}
 \end{description}
 \end{minipage}\\[1em]
@@ -313,7 +321,7 @@ That certainly went by a lot faster than my last reading of \textit{Gödel, Esch
 \section{Welcome To The World Of Mirrors}
 
 Nevertheless, this isn't the proof I want to use going forward. The reasons are threefold:
-\begin{itemize}
+\begin{itemize}[label=$\bullet$]
 \item The jump from honesty to consistency is rather tricky.
 \item The Second Incompleteness Theorem doesn't follow naturally at all.
 \item The parallels to Gödel's and Rosser's original proofs are lost. (This one's the biggie.)
@@ -332,30 +340,36 @@ Consider the following algorithm:
 \end{algo}
 I now claim that <<$P(P)$ doesn't halt>> is undecidable in $\F$. Let's call this sentence $\iGoedel$ because it's the perfect analogue of Gödel's $G$. The critical new feature of $\iGoedel$ is that its construction has become just a small matter of programming. If we go through the alternatives, we find:
 \begin{description}
-\nameditem{Suppose $\iGoedel$ is provable:}
+\item[Suppose $\iGoedel$ is provable:]
 \begin{description}
-\nameditem{Either $\neg \iGoedel$ is also provable:}
+\item[]
+\item[Either $\neg \iGoedel$ is also provable:]
 \begin{itemize}
-\impl $\F$ is inconsistent. \lightning
+\item[]
+\item $\F$ is inconsistent. \lightning
 \end{itemize}
-\nameditem{Or $\neg \iGoedel$ isn't provable:}
+\item[Or $\neg \iGoedel$ isn't provable:]
 \begin{itemize}
-\impl Because $\iGoedel$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out in $\F$.
-\impl Because this sequence leads to a terminal state this gives a proof of <<$P(P)$ halts>> = $\neg \iGoedel$. \lightning
+\item[]
+\item Because $\iGoedel$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out in $\F$.
+\item Because this sequence leads to a terminal state this gives a proof of <<$P(P)$ halts>> = $\neg \iGoedel$. \lightning
 \end{itemize}
 \end{description}
-\nameditem{Suppose $\neg \iGoedel$ is provable:}
+\item[Suppose $\neg \iGoedel$ is provable:]
 \begin{description}
-\nameditem{Either $\iGoedel$ is also provable:}
+\item[]
+\item[Either $\iGoedel$ is also provable:]
 \begin{itemize}
-\impl $\F$ is inconsistent. \lightning
+\item[]
+\item $\F$ is inconsistent. \lightning
 \end{itemize}
-\nameditem{Or $\iGoedel$ isn't provable:}
+\item[Or $\iGoedel$ isn't provable:]
 \begin{itemize}
-\impl Because $\neg \iGoedel$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out in $\F$.
-\impl But in order to halt $P(P)$ will have to find a proof of $\iGoedel$ = <<$P(P)$ doesn't halt>>, not $\neg \iGoedel$ (uh-oh).
-\impl $P(P)$ doesn't halt despite the fact that this is exactly what $\neg \iGoedel$ = <<$P(P)$ halts>> asserts.
-\impl $\F$ is dishonest. \lightning
+\item[]
+\item Because $\neg \iGoedel$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out in $\F$.
+\item But in order to halt $P(P)$ will have to find a proof of $\iGoedel$ = <<$P(P)$ doesn't halt>>, not $\neg \iGoedel$ (uh-oh).
+\item $P(P)$ doesn't halt despite the fact that this is exactly what $\neg \iGoedel$ = <<$P(P)$ halts>> asserts.
+\item $\F$ is dishonest. \lightning
 \end{itemize}
 \end{description}
 \end{description}
@@ -393,34 +407,38 @@ Consider the following algorithm:
 \end{algo}
 In a sense we've seen this algorithm before. Just take $H$ as it's defined in the first proof of Theorem \ref{original-first-by-computation} substitute it into $\overline{H}$ and simplify. It's $\F$'s most valiant attempt to implement $\overline{H}$. This time our undecidable sentence is (you guessed it) $\iRosser$ = <<$B(B)$ doesn't halt>>.
 \begin{description}
-\nameditem{Suppose $\iRosser$ is provable:}
+\item[Suppose $\iRosser$ is provable:]
+$\Rightarrow$ There exists some shortest proof $p$ of $\iRosser$.
 \begin{description}
-\impl There exists some shortest proof $p$ of $\iRosser$.
-\nameditem{Either there is a proof of $\neg \iRosser$ that's shorter than $p$:}
+\item[Either there is a proof of $\neg \iRosser$ that's shorter than $p$:]
 \begin{itemize}
-\impl $\F$ is inconsistent. \lightning\footnote{I might add that in this case $B(B)$ never reaches $p$ but finds the shorter proof first. We could dwell on this. But we already have an inconsistency which is all we need.}
+\item[]
+\item $\F$ is inconsistent. \lightning\footnote{I might add that in this case $B(B)$ never reaches $p$ but finds the shorter proof first. We could dwell on this. But we already have an inconsistency which is all we need.}
 \end{itemize}
-\nameditem{Or there isn't:}
+\item[Or there isn't:]
 \begin{itemize}
-\impl $B(B)$ will go through all strings shorter than $p$ and determine that none of them are a proof of $\neg \iRosser$.
-\impl We can write out this computation in $\F$ and point out that $B(B)$ will then find $p$ and enter a terminal state.
-\impl This allows us to construct a (longer) proof of <<$B(B)$ halts>> = $\neg \iRosser$.
-\impl $\F$ is inconsistent. \lightning
+\item[]
+\item $B(B)$ will go through all strings shorter than $p$ and determine that none of them are a proof of $\neg \iRosser$.
+\item We can write out this computation in $\F$ and point out that $B(B)$ will then find $p$ and enter a terminal state.
+\item This allows us to construct a (longer) proof of <<$B(B)$ halts>> = $\neg \iRosser$.
+\item $\F$ is inconsistent. \lightning
 \end{itemize}
 \end{description}
-\nameditem{Suppose $\neg \iRosser$ is provable:}
+\item[Suppose $\neg \iRosser$ is provable:]
+$\Rightarrow$ There exists some shortest proof $p$ of $\neg \iRosser$.
 \begin{description}
-\impl There exists some shortest proof $p$ of $\neg \iRosser$.
-\nameditem{Either there is a proof of $\iRosser$ that's shorter than $p$:}
+\item[Either there is a proof of $\iRosser$ that's shorter than $p$:]
 \begin{itemize}
-\impl $\F$ is inconsistent. \lightning
+\item[]
+\item $\F$ is inconsistent. \lightning
 \end{itemize}
-\nameditem{Or there isn't:}
+\item[Or there isn't:]
 \begin{itemize}
-\impl $B(B)$ will go through all strings shorter than $p$ and determine that none of them are a proof of $\iRosser$.
-\impl We can write out this computation in $\F$ and point out that $B(B)$ will then find $p$ and enter an infinite loop.\footnote{Proving that a program runs forever raises the specter ($\mathghost$) of sub-inconsistency. But rest assured. Any formal system capable of reasoning about algorithms can prove that ``\textbf{while true} do nothing'' runs forever. Otherwise it ought to be ashamed of itself.}
-\impl This allows us to construct a (longer) proof of <<$B(B)$ doesn't halt>> = $\iRosser$.
-\impl $\F$ is inconsistent. \lightning
+\item[]
+\item $B(B)$ will go through all strings shorter than $p$ and determine that none of them are a proof of $\iRosser$.
+\item We can write out this computation in $\F$ and point out that $B(B)$ will then find $p$ and enter an infinite loop.\footnote{Proving that a program runs forever raises the specter ($\mathghost$) of sub-inconsistency. But rest assured. Any formal system capable of reasoning about algorithms can prove that ``\textbf{while true} do nothing'' runs forever. Otherwise it ought to be ashamed of itself.}
+\item This allows us to construct a (longer) proof of <<$B(B)$ doesn't halt>> = $\iRosser$.
+\item $\F$ is inconsistent. \lightning
 \end{itemize}
 \end{description}
 \end{description}
@@ -439,11 +457,11 @@ We could continue using $B$ for the Second Incompleteness Theorem. But that woul
 \begin{proof}
 Let's assume for the purpose of contradiction that $\F$ can prove its own consistency
 \begin{itemize}
-\impl The first half of our new proof for the First Incompleteness Theorem can be read as a proof by contradiction that if $\F$ is consistent, then $P(P)$ doesn't halt.
-\impl Using the fact that <<$P(P)$ doesn't halt>> = $\iGoedel$ this can be stated more concisely as ``$\F$ is consistent $\implies$ $\iGoedel$''.
-\impl Now we simply observe (with some faith) that there wasn't actually anything in the reasoning we used to prove this that we couldn't carry out just as well in $\F$. So <<$\F$ is consistent $\implies$ $\iGoedel$>> is actually a theorem in $\F$.
-\impl We're assuming that $\F$ can prove <<$\F$ is consistent>>. So by modus ponens $\F$ can also prove $\iGoedel$.
-\impl But then $P(P)$ will eventually find this proof and halt. \lightning
+\item The first half of our new proof for the First Incompleteness Theorem can be read as a proof by contradiction that if $\F$ is consistent, then $P(P)$ doesn't halt.
+\item Using the fact that <<$P(P)$ doesn't halt>> = $\iGoedel$ this can be stated more concisely as ``$\F$ is consistent $\implies$ $\iGoedel$''.
+\item Now we simply observe (with some faith) that there wasn't actually anything in the reasoning we used to prove this that we couldn't carry out just as well in $\F$. So <<$\F$ is consistent $\implies$ $\iGoedel$>> is actually a theorem in $\F$.
+\item We're assuming that $\F$ can prove <<$\F$ is consistent>>. So by modus ponens $\F$ can also prove $\iGoedel$.
+\item But then $P(P)$ will eventually find this proof and halt. \lightning
 \end{itemize}
 \end{proof}
 
