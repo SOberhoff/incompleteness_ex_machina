@@ -27,7 +27,7 @@
 \newcommand{\iGoedel}{\ensuremath{\accentset{\scalebox{0.35}{$\infty$}}{G}}}
 \newcommand{\iRosser}{\ensuremath{\accentset{\scalebox{0.35}{$\infty$}}{R}}}
 
-\setlist[description]{style=nextline, itemsep=0.25pt, topsep=0.25pt}
+\setlist[description]{leftmargin=0.5cm, style=nextline, itemsep=0.25pt, topsep=0.25pt}
 \setlist[itemize]{style=nextline, itemsep=0.25pt, topsep=0.25pt, label={$\Rightarrow$}}
 
 \renewcommand\algorithmicfunction{}
@@ -100,9 +100,9 @@ In this essay we'll prove Gödel's incompleteness theorems twice. First, we'll p
 
 \section{The Incompleteness Theorems On Fast-Forward}
 
-Kurt Gödel's incompleteness theorems are clearly the most significant results in the history of mathematics (fight me). The first establishes that no single ``proper'' formal system can fully settle all mathematical questions; that truth and provability are distinct concepts. The second shows that such a formal system also can't prove itself free of contradiction. If it tries, its wings will melt and it will crash to the ground.
+Kurt Gödel's incompleteness theorems are clearly the most significant results in the history of mathematics (fight me). The first establishes that no single ``proper'' formal system can fully settle all mathematical questions; that truth and provability are distinct concepts.\footnote{Note to the veteran reader: this entire discussion is focused on the standard interpretation. No funky transfinite numbers.} The second shows that such a formal system also can't prove itself free of contradiction. If it tries, its wings will melt and it will crash to the ground.
 
-Gödel accomplished these triumphs as follows. Suppose we're given a formal system\footnote{For the purpose of this discussion every formal system is effectively axiomatized by definition. If you don't know what that means, don't worry about it.} $\F$ that is capable of reasoning about elementary arithmetic. Then, as Gödel showed through a lot of toil, it is possible to construct a sentence $G$ which essentially says ``I am not provable in $\F$''. Once he had built this sentence he then simply asked: can $G$ be proven or disproven---that is \textit{decided}---in $\F$?
+Gödel accomplished these triumphs as follows. Suppose we're given a formal system\footnote{For the purpose of this discussion every formal system is effectively axiomatized by definition. This basically just boils down to the fact that proofs are computer checkable.} $\F$ that is capable of reasoning about elementary arithmetic. Then, as Gödel showed through a lot of toil, it is possible to construct a sentence $G$ which essentially says ``I am not provable in $\F$''. Once he had built this sentence he then simply asked: can $G$ be proven or disproven---that is \textit{decided}---in $\F$?
 
 \begin{description}
 \item[Suppose $G$ is provable:]
@@ -117,11 +117,11 @@ Gödel accomplished these triumphs as follows. Suppose we're given a formal syst
 \begin{itemize}
 \item[]
 \item Because $G$ is provable there exists some concrete proof of $G$ which we can write out \textit{inside} $\F$. This is done using a device called Gödel numbering which allows numbers to talk about proofs. It's complicated.
-\item Because this proof leads to $G$ this allows us to construct a new proof of <<$G$ is provable>>\footnote{Whereas regular quotes (``'') perform their usual function, guillemets (<<>>) surround formal sentences denoted by their English description. Also ``='' doesn't always have to mean exact equality. I also use it to relate sentences which are merely logically equivalent, provided this is obvious.} = $\neg G$\footnote{Beware: the negation of $G$ = <<$G$ isn't provable>>, denoted $\neg G$, is \textit{not} <<$\neg G$ isn't provable>>. It's <<$G$ \textit{is} provable>>. These are very different sentences. Furthermore, it's important to notice that $\neg G$ isn't being self-referential when it says ``$G$ is provable''. $\neg G$ is really more like an evil twin that's telling lies about its sibling (assuming the system $\F$  as a whole is honest).}. But we're assuming $\neg G$ \textit{isn't} provable. We have arrived at a genuine contradiction, not just an inconsistency. So this can't happen. We'll use the shorthand ``\lightning'' for this in the future.
+\item Because this proof leads to $G$ this allows us to construct a new proof of <<$G$ is provable>> = $\neg G$.\footnote{Whereas regular quotes (``'') perform their usual function, guillemets (<<>>) surround formal sentences denoted by their English description. Also ``='' doesn't always have to mean exact equality. I also use it to relate sentences which are merely logically equivalent, provided this is obvious.} But we're assuming $\neg G$ \textit{isn't} provable. We have arrived at a genuine contradiction, not just an inconsistency. So this can't happen. We'll use the shorthand ``\lightning'' for this in the future.
 \end{itemize}
 \end{description}
 \item[Suppose $\neg G$ is provable:]
-This is what it means to disprove $G$. Also, mind the fact that this case and the previous aren't logical opposites. That's where I use either/or.
+This is what it means to disprove $G$. But beware: $\neg G$ isn't a self-referential sentence. In particular, it's not equal to <<$\neg G$ isn't provable>>. Instead, it's <<$G$ \textit{is} provable>>. These are very different sentences. $\neg G$ is really more like an evil twin that's telling lies about its sibling (assuming the system $\F$  as a whole is honest). Furthermore, mind the fact that this case and the previous aren't logical opposites. That's where I use either/or.
 \begin{description}
 \item[Either $G$ is also provable:]
 \begin{itemize}
