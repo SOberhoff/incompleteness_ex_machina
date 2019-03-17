@@ -219,7 +219,7 @@ Perhaps the fact that this theorem speaks of consistency, not honesty, makes you
 
 \begin{proof}
 Let's assume for the purpose of contradiction that $\F$ can prove its own consistency
-\begin{itemize}
+\begin{itemize}[topsep=0.5em]
 \item The first half of the proof for the First Incompleteness Theorem can be read as a proof by contradiction that if $\F$ is consistent, then $G$ isn't provable.
 \item Using the fact that <<$G$ isn't provable>> = $G$ this can be stated more concisely as ``$\F$ is consistent $\implies G$''.
 \item As Gödel himself pointed out with some hand-waving, there wasn't actually anything in the reasoning we used to prove this that we couldn't carry out just as well in $\F$. So <<$\F$ is consistent $\implies G$>> is actually a theorem in $\F$.
@@ -255,7 +255,7 @@ A \mapsto
 \text{reject} & \text{if $A(A)$ doesn't halt.}
 \end{cases}
 \]
-(``$A$'' has a double meaning here. It denotes either the function computed by $A$ or its source code depending on how it is used.)
+(``$A(A)$'' denotes an algorithm $A$ running on its own source code.)
 \end{lemma}
 
 \begin{proof}
@@ -272,8 +272,7 @@ Suppose $H$ solves the Halting Problem. Then one could create the following algo
 \end{algo}
 ``halt'' just... halts. We don't even need to bother accepting or rejecting. It doesn't matter. And ``loop'' is a simple infinite loop with no exits. Now, question: does $\overline{H}(\overline{H})$ halt?
 \newline
-\medskip
-\begin{minipage}{0.5\textwidth}
+\begin{minipage}[c][][b]{0.5\textwidth}
 \begin{description}[noitemsep]
 \item[Either $\overline{H}(\overline{H})$ halts:]
 \begin{itemize}[noitemsep]
@@ -283,7 +282,7 @@ Suppose $H$ solves the Halting Problem. Then one could create the following algo
 \end{itemize}
 \end{description}
 \end{minipage}
-\begin{minipage}{0.45\textwidth}
+\begin{minipage}[c]{0.45\textwidth}
 \begin{description}[noitemsep]
 \item[Or $\overline{H}(\overline{H})$ doesn't halt:]
 \begin{itemize}[noitemsep]
@@ -294,7 +293,6 @@ Suppose $H$ solves the Halting Problem. Then one could create the following algo
 \end{description}
 \end{minipage}
 \newline
-\medskip
 Either way we get a contradiction.
 \end{proof}
 
@@ -327,7 +325,7 @@ That certainly went by a lot faster than my last reading of \textit{Gödel, Esch
 \section{Welcome To The World Of Mirrors}
 
 Nevertheless, this isn't the proof I want to use going forward. The reasons are threefold:
-\begin{itemize}[label=$\bullet$]
+\begin{itemize}[topsep=0.5em, label=$\bullet$]
 \item The jump from honesty to consistency is rather tricky.
 \item The Second Incompleteness Theorem doesn't follow naturally at all.
 \item The parallels to Gödel's and Rosser's original proofs are lost. (This one's the biggie.)
@@ -462,7 +460,7 @@ We could continue using $B$ for the Second Incompleteness Theorem. But that woul
 
 \begin{proof}
 Let's assume for the purpose of contradiction that $\F$ can prove its own consistency
-\begin{itemize}
+\begin{itemize}[topsep=0.5em]
 \item The first half of our new proof for the First Incompleteness Theorem can be read as a proof by contradiction that if $\F$ is consistent, then $P(P)$ doesn't halt.
 \item Using the fact that <<$P(P)$ doesn't halt>> = $\iGoedel$ this can be stated more concisely as ``$\F$ is consistent $\implies$ $\iGoedel$''.
 \item Now we simply observe (with some faith) that there wasn't actually anything in the reasoning we used to prove this that we couldn't carry out just as well in $\F$. So <<$\F$ is consistent $\implies$ $\iGoedel$>> is actually a theorem in $\F$.
