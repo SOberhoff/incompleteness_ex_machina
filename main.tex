@@ -1,35 +1,59 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[letterpaper, margin=2cm]{geometry}
-\usepackage{lmodern}
+\usepackage{lmodern} % for the guillemets, must be loaded before eulervm
 \usepackage[euler-digits, euler-hat-accent]{eulervm}
 \usepackage{amsmath, amsthm, amsfonts}
-\usepackage{halloweenmath}
-\usepackage{wasysym}
-\usepackage{graphicx}
+\usepackage{halloweenmath} % for the little specters
+\usepackage{wasysym} % for \lightning
 \usepackage{epigraph}
 \usepackage{enumitem}
-\usepackage{accents}
+\usepackage{accents} % for the little \infty symbols over G and R
 \usepackage[noend]{algpseudocode}
-\usepackage{float}
+\usepackage{float} % for exact placement of the yin-yang figure
+\usepackage[dvipsnames]{xcolor} % for color names, must be loaded before tikz
 \usepackage{tikz}
+\usepackage[framemethod=tikz]{mdframed}
 
-\usetikzlibrary{patterns}
+\usetikzlibrary{patterns} % for the background of the yin-yang figure
 
+% mdframed's skipbelow is buggy and needs a patch
+\usepackage{xpatch}
+\makeatletter
+\xpatchcmd{\endmdframed}
+  {\aftergroup\endmdf@trivlist\color@endgroup}
+  {\endmdf@trivlist\color@endgroup\@doendpe}
+  {}{}
+\makeatother
+
+% makes math in headlines bold
 \makeatletter
 \g@addto@macro\bfseries{\boldmath}
 \makeatother
 
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}
+\newtheoremstyle{customstyle}%            % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {.}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%
+\theoremstyle{customstyle}
+
+\newmdtheoremenv[innertopmargin=-2pt, skipbelow=0pt, linewidth=2pt, linecolor=Green, backgroundcolor=Green!10, bottomline=false, leftline=false, rightline=false]{theorem}{Theorem}
+\newmdtheoremenv[innertopmargin=-2pt, skipbelow=0pt, linewidth=2pt, linecolor=Green, backgroundcolor=Green!10, bottomline=false, leftline=false, rightline=false]{lemma}{Lemma}
 
 \newcommand{\F}{\ensuremath{\mathcal{F}}}
 \newcommand{\iGoedel}{\ensuremath{\accentset{\scalebox{0.35}{$\infty$}}{G}}}
 \newcommand{\iRosser}{\ensuremath{\accentset{\scalebox{0.35}{$\infty$}}{R}}}
 
-\setlist[description]{leftmargin=0.5cm, style=nextline, itemsep=0.25pt, topsep=0.25pt}
+\setlist[description]{leftmargin=0.5cm, style=nextline, noitemsep, topsep=0.25pt}
 \setlist[itemize]{style=nextline, itemsep=0.25pt, topsep=0.25pt, label={$\Rightarrow$}}
 
+% makes the pseudo code a little less verbose
 \renewcommand\algorithmicfunction{}
 \renewcommand\algorithmicthen{}
 \renewcommand\algorithmicdo{}
@@ -144,8 +168,9 @@ These deductions, as well as the ones in the proofs to follow, are deliberately 
 Now, it would be nice to say that we've proven that, if our formal system $\F$ is consistent, then $G$ is undecidable. Unfortunately our second case wasn't strong enough. So, just as Gödel did in 1931, we'll have to settle for a weaker formulation:
 
 \begin{theorem}[First Incompleteness Theorem---Original Version]
-Let $\F$ be an \textbf{honest}\footnote{The traditional term is ``\textit{sound}''. But when explaining this concept to my mother I had to admit that ``honesty'' is much more fitting. Also, I've been burned by overloaded usage of the term ``soundness'' in the past.} formal system capable of reasoning about elementary arithmetic. Then $\F$ is incomplete; it contains a sentence that can neither be proven nor disproven in $\F$.
+Let $\F$ be an \textit{honest}\footnotemark\ formal system capable of reasoning about elementary arithmetic. Then $\F$ is incomplete; it contains a sentence that can neither be proven nor disproven in $\F$.
 \end{theorem}
+\footnotetext{The traditional term is ``\textit{sound}''. But when explaining this concept to my mother I had to admit that ``honesty'' is much more fitting. Also, I've been burned by overloaded usage of the term ``soundness'' in the past.}
 
 \begin{proof}
 We just did that.
@@ -164,7 +189,7 @@ Disorienting as it may be, this dishonest-yet-consistent state can also occur in
 Okay, but isn't there a less violent way to prevent this kind of sub-terfuge? Indeed there is. In 1936 J. Barkley Rosser found a way to demonstrate the improved
 
 \begin{theorem}[First Incompleteness Theorem---Rosser's Version]
-Let $\F$ be a \textbf{consistent} formal system capable of reasoning about elementary arithmetic. Then $\F$ is incomplete.
+Let $\F$ be a \textit{consistent} formal system capable of reasoning about elementary arithmetic. Then $\F$ is incomplete.
 \end{theorem}
 
 \begin{proof}
@@ -272,8 +297,9 @@ Suppose $H$ solves the Halting Problem. Then one could create the following algo
 \end{algo}
 ``halt'' just... halts. We don't even need to bother accepting or rejecting. It doesn't matter. And ``loop'' is a simple infinite loop with no exits. Now, question: does $\overline{H}(\overline{H})$ halt?
 \newline
-\begin{minipage}[c][][b]{0.5\textwidth}
-\begin{description}[noitemsep]
+\begin{minipage}{0.5\textwidth}
+\smallskip
+\begin{description}
 \item[Either $\overline{H}(\overline{H})$ halts:]
 \begin{itemize}[noitemsep]
 \item[]
@@ -281,9 +307,11 @@ Suppose $H$ solves the Halting Problem. Then one could create the following algo
 \item $\overline{H}(\overline{H})$ doesn't halt. \lightning
 \end{itemize}
 \end{description}
+\smallskip
 \end{minipage}
-\begin{minipage}[c]{0.45\textwidth}
-\begin{description}[noitemsep]
+\begin{minipage}{0.45\textwidth}
+\smallskip
+\begin{description}
 \item[Or $\overline{H}(\overline{H})$ doesn't halt:]
 \begin{itemize}[noitemsep]
 \item[]
@@ -291,6 +319,7 @@ Suppose $H$ solves the Halting Problem. Then one could create the following algo
 \item $\overline{H}(\overline{H})$ halts. \lightning
 \end{itemize}
 \end{description}
+\smallskip
 \end{minipage}
 \newline
 Either way we get a contradiction.
@@ -322,6 +351,7 @@ Because $\F$ is complete this search will eventually hit upon a proof of  either
 
 That certainly went by a lot faster than my last reading of \textit{Gödel, Escher, Bach}. Though, if you've ever had the incompleteness theorems explained to you by a computer scientist, then you probably saw this proof coming a mile away. And for good reason. It's a very elegant little proof; deserving of its popularity.
 
+\newpage
 \section{Welcome To The World Of Mirrors}
 
 Nevertheless, this isn't the proof I want to use going forward. The reasons are threefold:
