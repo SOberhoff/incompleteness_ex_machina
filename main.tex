@@ -50,6 +50,8 @@
 \newcommand{\iGoedel}{\ensuremath{\accentset{\scalebox{0.35}{$\infty$}}{G}}}
 \newcommand{\iRosser}{\ensuremath{\accentset{\scalebox{0.35}{$\infty$}}{R}}}
 
+\setlength{\parindent}{0.25cm}
+
 \setlist[description]{leftmargin=0.5cm, style=nextline, noitemsep, topsep=0.25pt}
 \setlist[itemize]{style=nextline, itemsep=0.25pt, topsep=0.25pt, label={$\Rightarrow$}}
 
@@ -58,7 +60,7 @@
 \renewcommand\algorithmicthen{}
 \renewcommand\algorithmicdo{}
 
-\newenvironment{algo}{\begin{samepage}\medskip\hrule\begin{algorithmic}[H]}{\end{algorithmic}\hrule\medskip\end{samepage}}
+\newenvironment{algo}{\begin{samepage}\medskip\hrule\begin{algorithmic}}{\end{algorithmic}\hrule\medskip\end{samepage}}
 
 \begin{document}
 
@@ -286,7 +288,7 @@ A \mapsto
 \begin{proof}
 Suppose $H$ solves the Halting Problem. Then one could create the following algorithm:
 \begin{algo}
-\Function{$\overline{H}$}{$A$}
+\Function{$\overline{H}(A)$}{}
   \If{$H(A)$ rejects}
     \State halt
   \EndIf
@@ -335,7 +337,7 @@ Let $\F$ be an honest formal system capable of reasoning about algorithms. Then 
 \begin{proof}
 Suppose $\F$ was complete. Then we could solve the Halting Problem using the following algorithm:
 \begin{algo}
-\Function{$H$}{$A$}
+\Function{$H(A)$}{}
   \For{$x\in$ all possible strings\footnote{In case it wasn't clear: we're iterating in ``alphabetical order'' from shorter to longer. This procedure is sometimes also jokingly referred to as the \textit{British Museum algorithm} because  it's akin to using chimps in front of typewriters in an attempt to reproduce all the books in the British Museum.}}
     \If{$x$ proves <<$A(A)$  doesn't halt>>}
       \State reject
@@ -364,7 +366,7 @@ We can do better. Watch this:
 \begin{proof}
 Consider the following algorithm:
 \begin{algo}
-\Function{$P$}{$A$}
+\Function{$P(A)$}{}
   \For{$x\in$ all possible strings}
     \If{$x$ proves <<$A(A)$ doesn't halt>>}
       \State halt
@@ -428,7 +430,7 @@ Let $\F$ be a consistent formal system capable of reasoning about algorithms. Th
 \begin{proof}
 Consider the following algorithm:
 \begin{algo}
-\Function{$B$}{$A$}\footnote{I picked the names $P$ and $B$ because there's a slight visual resemblance between the letters and the programs they denote. (Also this is why I placed the ``doesn't halt'' case first.)}
+\Function{$B(A)$}{}\footnote{I picked the names $P$ and $B$ because there's a slight visual resemblance between the letters and the programs they denote. (Also this is why I placed the ``doesn't halt'' case first.)}
   \For{$x\in$ all possible strings}
     \If{$x$ proves <<$A(A)$ doesn't halt>>}
       \State halt
