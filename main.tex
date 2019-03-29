@@ -386,7 +386,7 @@ I now claim that <<$P(P)$ doesn't halt>> is undecidable in $\F$. Let's call this
 \item[Or $\neg \iGoedel$ isn't provable:]
 \begin{itemize}
 \item[]
-\item Because $\iGoedel$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out in $\F$.
+\item Because $\iGoedel$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out inside $\F$.
 \item Because this sequence leads to a terminal state this gives a proof of <<$P(P)$ halts>> = $\neg \iGoedel$. \lightning
 \end{itemize}
 \end{description}
@@ -401,7 +401,7 @@ I now claim that <<$P(P)$ doesn't halt>> is undecidable in $\F$. Let's call this
 \item[Or $\iGoedel$ isn't provable:]
 \begin{itemize}
 \item[]
-\item Because $\neg \iGoedel$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out in $\F$.
+\item Because $\neg \iGoedel$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out inside $\F$.
 \item But in order to halt $P(P)$ will have to find a proof of $\iGoedel$ = <<$P(P)$ doesn't halt>>, not $\neg \iGoedel$ (uh-oh).
 \item $P(P)$ doesn't halt despite the fact that this is exactly what $\neg \iGoedel$ = <<$P(P)$ halts>> asserts.
 \item $\F$ is dishonest. \lightning
@@ -454,8 +454,8 @@ $\Rightarrow$ There exists some shortest proof $p$ of $\iRosser$.
 \begin{itemize}
 \item[]
 \item $B(B)$ will go through all strings shorter than $p$ and determine that none of them are a proof of $\neg \iRosser$.
-\item We can write out this computation in $\F$ and point out that $B(B)$ will then find $p$ and enter a terminal state.
-\item This allows us to construct a (longer) proof of <<$B(B)$ halts>> = $\neg \iRosser$.
+\item We can write out this computation inside $\F$ and point out that $B(B)$ will then find $p$ and enter a terminal state.
+\item This allows us to construct a new (longer) proof of <<$B(B)$ halts>> = $\neg \iRosser$.
 \item $\F$ is inconsistent. \lightning
 \end{itemize}
 \end{description}
@@ -471,8 +471,8 @@ $\Rightarrow$ There exists some shortest proof $p$ of $\neg \iRosser$.
 \begin{itemize}
 \item[]
 \item $B(B)$ will go through all strings shorter than $p$ and determine that none of them are a proof of $\iRosser$.
-\item We can write out this computation in $\F$ and point out that $B(B)$ will then find $p$ and enter an infinite loop.\footnote{Proving that a program runs forever raises the specter ($\mathghost$) of sub-inconsistency. But rest assured. Any formal system capable of reasoning about algorithms can prove that ``\textbf{while true} do nothing'' runs forever. Otherwise it ought to be ashamed of itself.}
-\item This allows us to construct a (longer) proof of <<$B(B)$ doesn't halt>> = $\iRosser$.
+\item We can write out this computation inside $\F$ and point out that $B(B)$ will then find $p$ and enter an infinite loop.\footnote{Proving that a program runs forever raises the specter ($\mathghost$) of sub-inconsistency. But rest assured. Any formal system capable of reasoning about algorithms can prove that ``\textbf{while true} do nothing'' runs forever. Otherwise it ought to be ashamed of itself.}
+\item This allows us to construct a new (longer) proof of <<$B(B)$ doesn't halt>> = $\iRosser$.
 \item $\F$ is inconsistent. \lightning
 \end{itemize}
 \end{description}
