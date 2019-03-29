@@ -331,8 +331,10 @@ Easy peasy. As you'd expect of a mere lemma. We're now ready for the First Incom
 
 \begin{theorem}[First Incompleteness Theorem---Original Version By Computation]
 \label{original-first-by-computation}
-Let $\F$ be an honest formal system capable of reasoning about algorithms. Then $\F$ is incomplete.
+Let $\F$ be an honest Turing complete formal system. Then $\F$ is incomplete.
 \end{theorem}
+
+For a formal system to be \textit{Turing complete} just means that it can reason about algorithms. The details will emerge along the way.
 
 \begin{proof}
 Suppose $\F$ was complete. Then we could solve the Halting Problem using the following algorithm:
@@ -423,7 +425,7 @@ After all, if $\iGoedel$ isn't provable, then one can still prove that $P(P)$ ha
 And if you thought that was neat, just wait until you see Rosser's trick. As you may recall, this one worked by patching the asymmetry between the two cases in Gödel's original argument. Let's see what happens if we try the same here.
 
 \begin{theorem}[First Incompleteness Theorem---Rosser's Version By Computation]
-Let $\F$ be a consistent formal system capable of reasoning about algorithms. Then $\F$ is incomplete.
+Let $\F$ be a consistent Turing complete formal system. Then $\F$ is incomplete.
 \end{theorem}
 
 \begin{proof}
@@ -484,7 +486,7 @@ I feel like I'm watching a reboot (in more than one sense). We can even recogniz
 Alright, time for the grand finale.
 
 \begin{theorem}[Second Incompleteness Theorem---By Computation]
-One last time, let $\F$ be a consistent formal system capable of reasoning about algorithms. Then $\F$ can't prove its own consistency.
+One last time, let $\F$ be a consistent Turing complete formal system. Then $\F$ can't prove its own consistency.
 \end{theorem}
 
 We could continue using $B$ for the Second Incompleteness Theorem. But that would be ugly. Gödel didn't need Rosser's help for his proof. Neither shall we.
@@ -517,20 +519,22 @@ This means I could've organized this presentation very differently. I could've j
 Gödel was programming the integers. That is that. And he didn't even know it at the time; truly impressive. I think this feat deserves to be encapsulated with its own theorem. Perhaps we can come together and save posterity from the grim fate of also only realizing this much later in their lives. It's for the kids---and for the horses.
 
 \begin{theorem}
-Elementary arithmetic is Turing complete.
+Elementary arithmetic is a Turing complete domain.
 \end{theorem}
 
 I'll have to leave the exact formulation of this theorem to smarter people. After all, I did recently score in the bottom 7\% of the GRE's analytical writing section (come on!). The upshot is that this allows us to easily recover the incompleteness theorems for elementary arithmetic from a more general insight:
 
 \begin{theorem}[Turing Incompleteness Theorem]
-Any formal system capable of reasoning about a Turing complete domain can reason about algorithms. Thereby, the incompleteness theorems apply to it. In slogan form: 
+Any consistent formal system $\F$ capable of reasoning about a Turing complete domain can reason about algorithms. That makes $\F$ a consistent Turing complete formal system. Thereby, the incompleteness theorems apply to it. In slogan form: 
 \begin{center}
 If it's complete, then it's incomplete.
 \end{center}
 \end{theorem}
 
 \begin{proof}
-Simply encode algorithms $P$ and $B$ into the domain and reiterate the previous arguments.
+I think the idea is best conveyed with an example. Take the famously Turing complete Game of Life. For any algorithm one can create a configuration in the Game of Life which mimics that algorithm. Now suppose somebody came up with a formal system $\F$ to reason about the Game of Life. This formal system might be able to prove assertions such as: <<Starting with a configuration of the form [\dots] square $(0, 0)$ will never be occupied>>.
+
+The incompleteness theorems are now immediate. All we have to do is to encode the algorithms $P$ and $B$ into a Game of Life configuration and reiterate the previous arguments. Conclusion: $\F$ will never be able to decide whether the encoding of $B$ leads to a ``terminal state''. And it won't be able to prove its own consistency.
 \end{proof}
 
 As a consequence computational undecidability and logical undecidability go hand in hand. And elementary arithmetic is just one further entry in the long list containing the Game of Life, \scalebox{0.95}{Fractran}, \scalebox{0.9}{Post Tag Systems}, \scalebox{0.85}{Magic the Gathering}, \scalebox{0.8}{the human brain}, \scalebox{0.75}{Rule 110}, \scalebox{0.7}{the Lambda Calculus}, \scalebox{0.65}{musical notation}, \scalebox{0.6}{\dots}\\[2em]
