@@ -182,7 +182,7 @@ Okay, I pulled a fast one there. Crucially, I skipped over a rather important co
 
 As the name suggests, an honest formal system is a formal system that speaks the truth. We can believe the claims it makes. In particular, if our $\F$ is honest and proves $\neg G$ = <<$G$ is provable>>, then, just as $\neg G$ says, it really is the case that $G$ is provable. This is how we can force a contradiction out of the second case.
 
-But honesty is a stronger assumption than consistency. An honest formal system is always consistent. After all, an inconsistent formal system contains a sentence $S$ such that both $S$ and $\neg S$ is provable.\footnote{Notice how this mirrors incompleteness which says that for some sentence $S$ \textit{neither} $S$ nor $\neg S$ is provable.} One of these must be a lie. However, a consistent formal system isn't necessarily honest. Here's a completely hypothetical example to illustrate: 
+But honesty is a stronger assumption than consistency. An honest formal system is always consistent. After all, an inconsistent formal system contains a sentence $S$ such that both $S$ and $\neg S$ is provable. One of these must be a lie. However, a consistent formal system isn't necessarily honest. Here's a completely hypothetical example to illustrate: 
 
 Imagine I'm the leader of an idyllic communist utopia. Everything is going according to five-year plan. Except one day a nuclear reactor of mine suddenly catches fire. If I then go on to tell the world community that there's nothing to worry about, this will merely be a lie, not a contradiction. Even once Swedish scientists begin smelling the fire my excuses, while fabricated, can still retain their \textit{internal} consistency. It's only when I finally confess to my mishap that I contradict myself. At that point I have given two directly contradictory accounts. Now even those without a Geiger counter can tell that I've been dishonest.
 
@@ -215,7 +215,7 @@ $\Rightarrow$ There exists some shortest proof $p$ of $R$.
 \end{itemize}
 \end{description}
 \item[Suppose $\neg R$ is provable:]
-$\Rightarrow$ There exists some shortest proof $p$ of $\neg R$.\footnote{The letter ``$p$'' is being reused. This $p$ is not the same as the previous $p$.}
+$\Rightarrow$ There exists some shortest proof $p$ of $\neg R$.
 \begin{description}
 \item[Either there is a proof of $R$ that's shorter than $p$:]
 \begin{itemize}
@@ -259,7 +259,7 @@ Moral of the story: if you declare yourself a very stable genius, you're not.\ci
 
 \section{The Rise Of The Machines}
 
-We now come to the dramatic turn in our story. Namely, we're about to demand that our formal system $\F$ can reason about algorithms\footnote{\textit{Algorithm}, \textit{Turing machine}, and \textit{computer program} are basically synonyms in my vocabulary.}, not just elementary arithmetic. And then we'll reprove all three of the previous results on top of that.
+We now come to the dramatic turn in our story. Namely, we're about to demand that our formal system $\F$ can reason about algorithms, not just elementary arithmetic. And then we'll reprove all three of the previous results on top of that.
 
 What could possibly provoke such heresy? Well, you may recall that in the prequel we relied quite heavily on the fact that both $G$ and $R$ could \textit{somehow} be constructed in $\F$. But we never actually performed these constructions. We also liberally made assertions of the form: ``we can list out all proofs up to length $n$ \textit{inside} $\F$''. But $\F$ is about numbers, not formal sentences. How is all of this ultimately accomplished?
 
@@ -348,12 +348,11 @@ Suppose $\F$ was complete. Then we could solve the Halting Problem using the fol
   \EndFor
 \EndFunction
 \end{algo}
-Because $\F$ is complete this search will eventually hit upon a proof of  either <<$A(A)$ halts>> or <<$A(A)$ doesn't halt>>. And because $\F$ is honest, we'll be able to trust its judgment. That determines whether or not $A(A)$ halts. But, as we saw only a moment ago, it's impossible to solve the Halting Problem. So $\F$ couldn't have been complete. \lightning
+Because $\F$ is complete this search will eventually hit upon a proof of  either <<$A(A)$ halts>> or <<$A(A)$ doesn't halt>>. And because $\F$ is honest we'll be able to trust its judgment. That determines whether or not $A(A)$ halts. But, as we saw only a moment ago, it's impossible to solve the Halting Problem. So $\F$ couldn't have been complete. \lightning
 \end{proof}
 
 That certainly went by a lot faster than my last reading of \textit{Gödel, Escher, Bach}. Though, if you've ever had the incompleteness theorems explained to you by a computer scientist, then you probably saw this proof coming a mile away. And for good reason. It's a very elegant little proof; deserving of its popularity.
 
-\newpage
 \section{Welcome To The World Of Mirrors}
 
 Nevertheless, this isn't the proof I want to use going forward. The reasons are threefold:
