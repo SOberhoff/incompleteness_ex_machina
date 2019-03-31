@@ -2,9 +2,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[letterpaper, margin=2cm]{geometry}
-\usepackage{lmodern} % for the guillemets, must be loaded before eulervm
+\usepackage[boldsans, amsfonts, amssymb]{concmath}
 \usepackage[euler-digits, euler-hat-accent]{eulervm}
-\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{amsmath, amsthm}
 \usepackage{halloweenmath} % for the little specters
 \usepackage{wasysym} % for \lightning
 \usepackage{epigraph}
@@ -81,7 +81,7 @@ In this essay we'll prove Gödel's incompleteness theorems twice. First, we'll p
 \vspace{-5cm}
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[scale=0.75]
+\begin{tikzpicture}[scale=0.7]
   \draw[pattern=north west lines, pattern color=lightgray, thick] (-9cm, -9cm) rectangle (9cm, 9cm);
 
   \begin{scope}
@@ -143,7 +143,7 @@ Gödel accomplished these triumphs as follows. Suppose we're given a formal syst
 \begin{itemize}
 \item[]
 \item Because $G$ is provable there exists some concrete proof of $G$ which we can write out \textit{inside} $\F$. This is done using a device called Gödel numbering which allows numbers to talk about proofs. It's complicated.
-\item Because this proof leads to $G$ this allows us to construct a new proof of <<$G$ is provable>> = $\neg G$.\footnote{Whereas regular quotes (``'') perform their usual function, guillemets (<<>>) surround formal sentences denoted by their English description. Also ``='' doesn't always have to mean exact equality. I also use it to relate sentences which are merely logically equivalent, provided this is obvious.} But we're assuming $\neg G$ \textit{isn't} provable. We have arrived at a genuine contradiction, not just an inconsistency. So this can't happen. We'll use the shorthand ``\lightning'' for this in the future.
+\item Because this proof leads to $G$ this allows us to construct a new proof of <<$G$ is provable>> = $\neg G$.\footnote{Whereas regular quotes (`` '') perform their usual function, guillemets (<< >>) surround formal sentences denoted by their English description. Also ``='' doesn't always have to mean exact equality. I also use it to relate sentences which are merely logically equivalent, provided this is obvious.} But we're assuming $\neg G$ \textit{isn't} provable. We have arrived at a genuine contradiction, not just an inconsistency. So this can't happen. We'll use the shorthand ``\lightning'' for this in the future.
 \end{itemize}
 \end{description}
 \item[Suppose $\neg G$ is provable:]
