@@ -43,14 +43,15 @@
   {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%
 \theoremstyle{customstyle}
 
-\newmdtheoremenv[innertopmargin=-2pt, skipbelow=0pt, linewidth=2pt, linecolor=Green, backgroundcolor=Green!10, bottomline=false, leftline=false, rightline=false]{theorem}{Theorem}
-\newmdtheoremenv[innertopmargin=-2pt, skipbelow=0pt, linewidth=2pt, linecolor=Green, backgroundcolor=Green!10, bottomline=false, leftline=false, rightline=false]{lemma}{Lemma}
+\newmdtheoremenv[innertopmargin=-2pt, skipabove=5pt, skipbelow=0pt, linewidth=2pt, linecolor=Green, backgroundcolor=Green!10, bottomline=false, leftline=false, rightline=false]{theorem}{Theorem}
+\newmdtheoremenv[innertopmargin=-2pt, skipabove=5pt, skipbelow=0pt, linewidth=2pt, linecolor=Green, backgroundcolor=Green!10, bottomline=false, leftline=false, rightline=false]{lemma}{Lemma}
 
 \newcommand{\F}{\ensuremath{\mathcal{F}}}
 \newcommand{\iGoedel}{\ensuremath{\accentset{\scalebox{0.35}{$\infty$}}{G}}}
 \newcommand{\iRosser}{\ensuremath{\accentset{\scalebox{0.35}{$\infty$}}{R}}}
 
 \setlength{\parindent}{0.25cm}
+\setlength{\epigraphwidth}{\textwidth}
 
 \setlist[description]{leftmargin=0.5cm, style=nextline, noitemsep, topsep=0.25pt}
 \setlist[itemize]{style=nextline, itemsep=0.25pt, topsep=0.25pt, label={$\Rightarrow$}}
@@ -73,8 +74,6 @@
 \begin{abstract}
 In this essay we'll prove Gödel's incompleteness theorems twice. First, we'll prove them the good old-fashioned way. Then we'll repeat the feat in the setting of computation. In the process we'll discover that Gödel's work, rightly viewed, needs to be split into two parts: the transport of computation into the arena of arithmetic on the one hand and the actual incompleteness theorems on the other. After we're done there will be cake.
 \end{abstract}
-
-\setlength{\epigraphwidth}{\textwidth}
 
 \epigraph{It is a profoundly erroneous truism, repeated by all copy-books and by eminent people when they are making speeches, that we should cultivate the habit of thinking of what we are doing. The precise opposite is the case. Civilization advances by extending the number of important operations which we can perform without thinking about them. Operations of thought are like cavalry charges in a battle---they are strictly limited in number, they require fresh horses, and must only be made at decisive moments. }{\textit{Alfred North Whitehead}}
 
@@ -126,7 +125,7 @@ In this essay we'll prove Gödel's incompleteness theorems twice. First, we'll p
 
 \section{The Incompleteness Theorems On Fast-Forward}
 
-Kurt Gödel's incompleteness theorems are clearly the most significant results in the history of mathematics (fight me). The first establishes that no single ``proper'' formal system can fully settle all mathematical questions; that truth and provability are distinct concepts.\footnote{Note to the veteran reader: this entire discussion is focused on the standard interpretation. No funky transfinite numbers.} The second shows that such a formal system also can't prove itself free of contradiction. If it tries, its wings will melt and it will crash to the ground.
+Kurt Gödel's incompleteness theorems are clearly the most significant results in the history of mathematics (fight me). The first establishes that no single ``proper'' formal system can fully settle all mathematical questions; that truth and provability are distinct concepts.\footnote{Note to the veteran reader: this entire presentation is focused on the standard interpretation. No funky transfinite numbers.} The second shows that such a formal system also can't prove itself free of contradiction. If it tries, its wings will melt and it will crash to the ground.
 
 Gödel accomplished these triumphs as follows. Suppose we're given a formal system\footnote{For the purpose of this discussion every formal system is effectively axiomatized by definition. This basically just boils down to the fact that proofs are computer checkable.} $\F$ that is capable of reasoning about elementary arithmetic. Then, as Gödel showed through a lot of toil, it is possible to construct a sentence $G$ which essentially says ``I am not provable in $\F$''. Once he had built this sentence he then simply asked: can $G$ be proven or disproven---that is \textit{decided}---in $\F$?
 
@@ -174,7 +173,7 @@ Let $\F$ be an \textit{honest}\footnotemark\ formal system capable of reasoning 
 \end{theorem}
 \footnotetext{The traditional term is ``\textit{sound}''. But when explaining this concept to my mother I had to admit that ``honesty'' is much more fitting. Also, I've been burned by overloaded usage of the term ``soundness'' in the past.}
 
-\begin{proof}
+\begin{proof}\vspace{-\topsep}
 We just did that.
 \end{proof}
 
@@ -186,7 +185,15 @@ But honesty is a stronger assumption than consistency. An honest formal system i
 
 Imagine I'm the leader of an idyllic communist utopia. Everything is going according to five-year plan. Except one day a nuclear reactor of mine suddenly catches fire. If I then go on to tell the world community that there's nothing to worry about, this will merely be a lie, not a contradiction. Even once Swedish scientists begin smelling the fire my excuses, while fabricated, can still retain their \textit{internal} consistency. It's only when I finally confess to my mishap that I contradict myself. At that point I have given two directly contradictory accounts. Now even those without a Geiger counter can tell that I've been dishonest.
 
-Disorienting as it may be, this dishonest-yet-consistent state can also occur in formal systems. Most important for our purposes, it is conceivable that we can prove $\neg G =$ <<$G$ is provable>> while $G$ in fact \textit{isn't} provable. This would lead to a curious situation I'll call \textit{sub-inconsistency}\footnote{Also known under the name ``\textit{$\omega$-inconsistency}''. Let's spare our horses.} where for all $n\in\mathbb{N}$ the sentence <<$G$ doesn't have a proof shorter than $n$>> can be proven in $\F$ by just going through all possible proofs up to length $n$ and pointing out that none of them do the trick. Yet the sentence with the ``for all'' on the inside, <<$G$ doesn't have a proof shorter than $n$ for all $n\in\mathbb{N}$>> = $G$, is not only unprovable but flat out contradicted by $\neg G$. This is why Gödel had to assume honesty (or at least \textit{super-consistency}) in his original proof. Basically, he had to press $\F$ up against the wall and shout: ``No games, dammit!''
+Disorienting as it may be, this dishonest-yet-consistent state can also occur in formal systems. Most important for our purposes, it is conceivable that $\F$ can prove $\neg G =$ <<$G$ is provable>> while $G$ in fact \textit{isn't} provable. This would lead to a curious situation I'll call \textit{sub-inconsistency}\footnote{Also known under the name ``\textit{$\omega$-inconsistency}''. Let's spare our horses.} where for all $n\in\mathbb{N}$ the sentence 
+\begin{center}
+<<$G$ doesn't have a proof shorter than $n$>>
+\end{center}
+can be proven in $\F$ by just going through all possible proofs up to length $n$ and pointing out that none of them do the trick. Yet the sentence with the ``for all'' on the inside,
+\begin{center}
+<<$G$ doesn't have a proof shorter than $n$ for all $n\in\mathbb{N}$>> = $G$,
+\end{center}
+is not only unprovable but flat out contradicted by $\neg G$. This is why Gödel had to assume honesty (or at least \textit{super-consistency}) in his original proof. Basically, he had to press $\F$ up against the wall and shout: ``No games, dammit!''
 
 Okay, but isn't there a less violent way to prevent this kind of sub-terfuge? Indeed there is. In 1936 J. Barkley Rosser found a way to demonstrate the improved
 
@@ -194,7 +201,7 @@ Okay, but isn't there a less violent way to prevent this kind of sub-terfuge? In
 Let $\F$ be a \textit{consistent} formal system capable of reasoning about elementary arithmetic. Then $\F$ is incomplete.
 \end{theorem}
 
-\begin{proof}
+\begin{proof}\vspace{-\topsep}
 In hindsight Rosser's trick is quite simple. Instead of formalizing ``I am not provable'' he formalized the sentence ``For every proof of me there exists a shorter disproof''. Let's refer to this sentence as $R$ and see how $R$ can help us.
 \begin{description}
 \item[Suppose $R$ is provable:]
@@ -228,7 +235,7 @@ $\Rightarrow$ There exists some shortest proof $p$ of $\neg R$.
 \item We can go through all strings up to the length of $p$ and determine that none of them are a proof of $R$.
 \item We can write out this list \textit{inside} $\F$ and point out that all longer strings are at least as long as $p$.
 \item This allows us to construct a new (longer) proof of <<For every proof of $R$ there exists a shorter disproof (namely $p$)>> = $R$.
-\item $\F$ is inconsistent. \lightning
+\item $\F$ is inconsistent. \lightning\qedhere
 \end{itemize}
 \end{description}
 \end{description}
@@ -251,7 +258,7 @@ Let's assume for the purpose of contradiction that $\F$ can prove its own consis
 \item Using the fact that <<$G$ isn't provable>> = $G$ this can be stated more concisely as ``$\F$ is consistent $\implies G$''.
 \item As Gödel himself pointed out with some hand-waving, there wasn't actually anything in the reasoning we used to prove this that we couldn't carry out just as well in $\F$. So <<$\F$ is consistent $\implies G$>> is actually a theorem in $\F$.
 \item We're assuming that $\F$ can prove <<$\F$ is consistent>>. So by modus ponens\footnote{Modus ponens is the inference rule that from $A$ and <<$A \implies B$>> follows $B$.} $\F$ can also prove $G$.
-\item But $G$ can't be proven. \lightning
+\item But $G$ can't be proven. \lightning\qedhere
 \end{itemize}
 \end{proof}
 
@@ -285,7 +292,7 @@ A \mapsto
 (``$A(A)$'' denotes an algorithm $A$ running on its own source code.)
 \end{lemma}
 
-\begin{proof}
+\begin{proof}\vspace{-\topsep}
 Suppose $H$ solves the Halting Problem. Then one could create the following algorithm:
 \begin{algo}
 \Function{$\overline{H}(A)$}{}
@@ -406,7 +413,7 @@ I now claim that <<$P(P)$ doesn't halt>> is undecidable in $\F$. Let's call this
 \item Since $\neg \iGoedel$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out inside $\F$.
 \item But in order to halt $P(P)$ will have to find a proof of $\iGoedel$ = <<$P(P)$ doesn't halt>>, not $\neg \iGoedel$ (uh-oh).
 \item $P(P)$ doesn't halt despite the fact that this is exactly what $\neg \iGoedel$ = <<$P(P)$ halts>> asserts.
-\item $\F$ is dishonest. \lightning
+\item $\F$ is dishonest. \lightning\qedhere
 \end{itemize}
 \end{description}
 \end{description}
@@ -428,7 +435,7 @@ And if you thought that was neat, just wait until you see Rosser's trick. As you
 Let $\F$ be a consistent Turing complete formal system. Then $\F$ is incomplete.
 \end{theorem}
 
-\begin{proof}
+\begin{proof}\vspace{-\topsep}
 Consider the following algorithm:
 \begin{algo}
 \Function{$B(A)$}{}\footnote{I picked the names $P$ and $B$ because there's a slight visual resemblance between the letters and the programs they denote. (Also this is why I placed the ``doesn't halt'' case first.)}
@@ -475,7 +482,7 @@ $\Rightarrow$ There exists some shortest proof $p$ of $\neg \iRosser$.
 \item $B(B)$ will go through all strings shorter than $p$ and determine that none of them are a proof of $\iRosser$.
 \item We can write out this computation inside $\F$ and point out that $B(B)$ will then find $p$ and enter an infinite loop.\footnote{Proving that a program runs forever raises the specter ($\mathghost$) of sub-inconsistency. But rest assured. Any formal system capable of reasoning about algorithms can prove that ``\textbf{while true} do nothing'' runs forever. Otherwise it ought to be ashamed of itself.}
 \item This allows us to construct a new (longer) proof of <<$B(B)$ doesn't halt>> = $\iRosser$.
-\item $\F$ is inconsistent. \lightning
+\item $\F$ is inconsistent. \lightning\qedhere
 \end{itemize}
 \end{description}
 \end{description}
@@ -498,7 +505,7 @@ Let's assume for the purpose of contradiction that $\F$ can prove its own consis
 \item Using the fact that <<$P(P)$ doesn't halt>> = $\iGoedel$ this can be stated more concisely as ``$\F$ is consistent $\implies$ $\iGoedel$''.
 \item Now we simply observe (with some faith) that there wasn't actually anything in the reasoning we used to prove this that we couldn't carry out just as well in $\F$. So <<$\F$ is consistent $\implies$ $\iGoedel$>> is actually a theorem in $\F$.
 \item We're assuming that $\F$ can prove <<$\F$ is consistent>>. So by modus ponens $\F$ can also prove $\iGoedel$.
-\item But then $P(P)$ will eventually find this proof and halt. \lightning
+\item But then $P(P)$ will eventually find this proof and halt. \lightning\qedhere
 \end{itemize}
 \end{proof}
 
@@ -531,7 +538,7 @@ If it's complete, then it's incomplete.
 \end{center}
 \end{theorem}
 
-\begin{proof}
+\begin{proof}\vspace{-\topsep}
 I think the idea is best conveyed with an example. Take the famously Turing complete Game of Life. For any algorithm one can create a configuration in the Game of Life which mimics that algorithm. Now suppose somebody came up with a formal system $\F$ to reason about the Game of Life. This formal system might be able to prove assertions such as: <<Starting with a configuration of the form [\dots] square $(0, 0)$ will never be occupied>>.
 
 The incompleteness theorems are now immediate. All we have to do is to encode the algorithms $P$ and $B$ into a Game of Life configuration and reiterate the previous arguments. Conclusion: $\F$ will never be able to decide whether the encoding of $B$ leads to a ``terminal state''. And it won't be able to prove its own consistency.
