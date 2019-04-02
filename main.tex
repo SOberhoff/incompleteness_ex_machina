@@ -215,7 +215,7 @@ $\Rightarrow$ There exists some shortest proof $p$ of $R$.
 \item[Or there isn't:]
 \begin{itemize}
 \item[]
-\item We can go through all strings up to the length of $p$ and determine that none of them are a proof of $\neg R$.
+\item We can go through all strings shorter than $p$ and determine that none of them are a proof of $\neg R$.
 \item We can write out this list \textit{inside} $\F$ and point out that all longer strings are at least as long as $p$.
 \item This allows us to construct a new (longer) proof of <<There exists a proof of $R$ with no shorter disproof (namely $p$)>> = $\neg R$.
 \item $\F$ is inconsistent. \lightning
@@ -232,7 +232,7 @@ $\Rightarrow$ There exists some shortest proof $p$ of $\neg R$.
 \item[Or there isn't:]
 \begin{itemize}
 \item[]
-\item We can go through all strings up to the length of $p$ and determine that none of them are a proof of $R$.
+\item We can go through all strings shorter than $p$ and determine that none of them are a proof of $R$.
 \item We can write out this list \textit{inside} $\F$ and point out that all longer strings are at least as long as $p$.
 \item This allows us to construct a new (longer) proof of <<For every proof of $R$ there exists a shorter disproof (namely $p$)>> = $R$.
 \item $\F$ is inconsistent. \lightning\qedhere
@@ -397,7 +397,7 @@ I now claim that <<$P(P)$ doesn't halt>> is undecidable in $\F$. Let's call this
 \begin{itemize}
 \item[]
 \item Since $\iGoedel$ is provable $P(P)$ will eventually find such a proof after some sequence of steps which we can write out inside $\F$.
-\item Because this sequence leads to a terminal state this gives a proof of <<$P(P)$ halts>> = $\neg \iGoedel$. \lightning
+\item Because this sequence leads to a terminal state this allows us to construct a new proof of <<$P(P)$ halts>> = $\neg \iGoedel$. \lightning
 \end{itemize}
 \end{description}
 \item[Suppose $\neg \iGoedel$ is provable:]
@@ -506,7 +506,7 @@ Let's assume for the purpose of contradiction that $\F$ can prove its own consis
 \item Using the fact that <<$P(P)$ doesn't halt>> = $\iGoedel$ this can be stated more concisely as ``$\F$ is consistent $\implies$ $\iGoedel$''.
 \item Now we simply observe (with some faith) that there wasn't actually anything in the reasoning we used to prove this that we couldn't carry out just as well in $\F$. So <<$\F$ is consistent $\implies$ $\iGoedel$>> is actually a theorem in $\F$.
 \item We're assuming that $\F$ can prove <<$\F$ is consistent>>. So by modus ponens $\F$ can also prove $\iGoedel$.
-\item But then $P(P)$ will eventually find this proof and halt. \lightning\qedhere
+\item But then $P(P)$ will eventually find such a proof and halt. \lightning\qedhere
 \end{itemize}
 \end{proof}
 
@@ -542,12 +542,13 @@ If it's complete, then it's incomplete.
 \begin{proof}\vspace{-\topsep}
 I think the idea is best conveyed with an example. Take the famously Turing complete Game of Life. For any algorithm one can create a configuration in the Game of Life which mimics that algorithm. Now suppose somebody came up with a formal system $\F$ to reason about the Game of Life. This formal system might be able to prove assertions such as: <<Starting with a configuration of the form [\dots] square $(0, 0)$ will never be occupied>>.
 
-The incompleteness theorems are now immediate. All we have to do is to encode the algorithms $P$ and $B$ into a Game of Life configuration and reiterate the previous arguments. Conclusion: $\F$ will never be able to decide whether the encoding of $B$ leads to a ``terminal state''. And it won't be able to prove its own consistency.
+The incompleteness theorems are now immediate. All we have to do is to encode the algorithms $P$ and $B$ into a Game of Life configuration and reiterate the previous arguments. Conclusion: $\F$ will never be able to decide whether the encoding of $B$ ``halts''. And it won't be able to prove its own consistency.
 \end{proof}
 
 As a consequence computational undecidability and logical undecidability go hand in hand. And elementary arithmetic is just one further entry in the long list containing the Game of Life, \scalebox{0.95}{Fractran}, \scalebox{0.9}{Post Tag Systems}, \scalebox{0.85}{Magic the Gathering}, \scalebox{0.8}{the human brain}, \scalebox{0.75}{Rule 110}, \scalebox{0.7}{the Lambda Calculus}, \scalebox{0.65}{musical notation}, \scalebox{0.6}{\dots}\\[2em]
 \footnotesize{(Thank you so much for your attention! The cake I promised in the abstract is on its way. Please stand by.) $\mathghost$}
 
+\newpage
 \begin{thebibliography}{6}
 \bibitem{goedel}
 Kurt Gödel, \textit{Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I}, Monatshefte für Mathematik und Physik, Issue 38, Dec. 1931 pp. 173--198
