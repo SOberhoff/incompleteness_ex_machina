@@ -127,7 +127,7 @@ In this essay we'll prove Gödel's incompleteness theorems twice. First, we'll p
 
 Kurt Gödel's incompleteness theorems are clearly the most significant results in the history of mathematics (fight me). The first establishes that no single ``proper'' formal system can fully settle all mathematical questions; that truth and provability are distinct concepts.\footnote{Note to the veteran reader: this entire presentation is focused on the standard interpretation. No funky transfinite numbers.} The second shows that such a formal system also can't prove itself free of contradiction. If it tries, its wings will melt and it will crash to the ground.
 
-Gödel accomplished these triumphs as follows. Suppose we're given a formal system\footnote{For the purpose of this discussion every formal system is effectively axiomatized by definition. This basically just boils down to the fact that proofs are computer checkable.} $\F$ that is capable of reasoning about elementary arithmetic. Then, as Gödel showed through a lot of toil, it is possible to construct a sentence $G$ which essentially says ``I am not provable in $\F$''. Once he had built this sentence he then simply asked: can $G$ be proven or disproven---that is \textit{decided}---in $\F$?
+Gödel accomplished these triumphs as follows. Suppose we're given a formal system\footnote{For the purpose of this discussion every formal system is effectively axiomatized by definition. This basically just boils down to the fact that proofs are computer checkable.} $\F$ that is capable of reasoning about elementary arithmetic. Then, as Gödel showed through a lot of toil~\cite{goedel}, it is possible to construct a sentence $G$ which essentially says ``I am not provable in $\F$''. Once he had built this sentence he then simply asked: can $G$ be proven or disproven---that is \textit{decided}---in $\F$?
 
 \begin{description}
 \item[Suppose $G$ is provable:]
@@ -195,7 +195,7 @@ can be proven in $\F$ by just going through all possible proofs up to length $n$
 \end{center}
 is not only unprovable but flat out contradicted by $\neg G$. This is why Gödel had to assume honesty (or at least \textit{super-consistency}) in his original proof. Basically, he had to press $\F$ up against the wall and shout: ``No games, dammit!''
 
-Okay, but isn't there a less violent way to prevent this kind of sub-terfuge? Indeed there is. In 1936 J. Barkley Rosser found a way to demonstrate the improved
+Okay, but isn't there a less violent way to prevent this kind of sub-terfuge? Indeed there is. In 1936 J. Barkley Rosser found a way~\cite{rosser} to demonstrate the improved
 
 \begin{theorem}[First Incompleteness Theorem---Rosser's Version]
 Let $\F$ be a \textit{consistent} formal system capable of reasoning about elementary arithmetic. Then $\F$ is incomplete.
@@ -241,7 +241,7 @@ $\Rightarrow$ There exists some shortest proof $p$ of $\neg R$.
 \end{description}
 \end{proof}
 
-Whereas Gödel's original proof was limping on one leg, Rosser's version is perfectly balanced, as all things should be, allowing the stronger result.
+Whereas Gödel's original proof was limping on one leg, Rosser's version is perfectly balanced, as all things should be, yielding the stronger result.
 
 Finally, there's one more summit to conquer in this mathematical Himalaya. That's the Second Incompleteness Theorem.
 
@@ -249,7 +249,7 @@ Finally, there's one more summit to conquer in this mathematical Himalaya. That'
 Again, let $\F$ be a consistent formal system capable of reasoning about elementary arithmetic. Then $\F$ can't prove its own consistency.
 \end{theorem}
 
-Perhaps the fact that this theorem speaks of consistency, not honesty, makes you a little suspicious. Is this another one of Rosser's upgrades? No. For the Second Incompleteness Theorem Gödel only needed half of his First Incompleteness Theorem. And as luck would have it this was exactly the half that spoke of consistency.
+Perhaps the fact that this theorem speaks of consistency, not honesty, makes you a little suspicious. Is this another one of Rosser's upgrades? No. For the Second Incompleteness Theorem Gödel only needed half of his First Incompleteness Theorem. And, as luck would have it, this was exactly the half that spoke of consistency.
 
 \begin{proof}
 Let's assume for the purpose of contradiction that $\F$ can prove its own consistency
@@ -262,7 +262,7 @@ Let's assume for the purpose of contradiction that $\F$ can prove its own consis
 \end{itemize}
 \end{proof}
 
-Moral of the story: if you declare yourself a very stable genius, you're not.\cite{trump}
+Moral of the story: if you declare yourself a very stable genius, you're not~\cite{trump}.
 
 \section{The Rise Of The Machines}
 
@@ -272,13 +272,13 @@ What could possibly provoke such heresy? Well, you may recall that in the preque
 
 The reality is that I hand-waved these details for a reason. They are non-trivial in the extreme (ideal exercises for the reader!). That's because, from a modern perspective, Gödel basically had to teach programming to formal systems that were about arithmetic. And he had to do it half a decade before the first models of computation were even devised. This is where all the tough technical work had to be done. The incompleteness theorems themselves were mere victory laps at the end.
 
-This delimitation between the different parts of Gödel's work is frequently passed over without comment but will become even more apparent as we move on. In fact, setting the record straight on this matter is really the main point of this essay. By placing computation---for example in the form of Turing machines---directly into the bedrock of our formal system our task will become orders of magnitude simpler. Gödel had to scale a vertical cliff to convince his peers that ``$p$ is a proof of $S$'' could be expressed within the confines of arithmetic. We on the other hand, aided by the ski lift built by Turing and his apostles, can see at a glance that the same could be checked by a computer. Let's exploit that.
+This delimitation between the different parts of Gödel's work is frequently passed over without comment but will become even more apparent as we move on. In fact, setting the record straight on this matter is really the main point of this essay. By placing computation---for example in the form of Turing machines---directly into the bedrock of our formal system our task will become orders of magnitude simpler. Gödel had to scale a vertical cliff to convince his peers that ``$p$ is a proof of $S$'' could be expressed within the confines of arithmetic. We, on the other hand, aided by the ski lift built by Turing and his apostles, can see at a glance that the same could be checked by a computer. Let's exploit that.
 
 Anybody who still harbors a nostalgic longing for ``elementary arithmetic'' can then take on the separate task of showing how to ponder computation in the realm of the natural numbers. Perhaps one can also study computation starting from a different base camp such as knot theory. Who knows? (I'm completely clueless regarding knot theory.) Meanwhile, we will have the incompleteness theorems above the clouds all to ourselves.
 
 \section{To Halt Or Not To Halt}
 
-Alright, here we go. The only ingredient we need to prepare is the unsolvability of the Halting Problem due to Alan Turing in 1936.
+Alright, here we go. The only ingredient we need to prepare is the unsolvability of the Halting Problem due to Alan Turing in 1936~\cite{turing}.
 
 \begin{lemma}[Unsolvability Of The Halting Problem]
 There's no algorithm that implements the function
@@ -339,6 +339,7 @@ Easy peasy. As you'd expect of a mere lemma. We're now ready for the First Incom
 \begin{theorem}[First Incompleteness Theorem---Original Version By Computation]
 \label{original-first-by-computation}
 Let $\F$ be an honest Turing complete formal system. Then $\F$ is incomplete.
+\label{first-by-comp}
 \end{theorem}
 
 For a formal system to be \textit{Turing complete} just means that it can reason about algorithms. The details will emerge along the way.
@@ -347,7 +348,7 @@ For a formal system to be \textit{Turing complete} just means that it can reason
 Suppose $\F$ was complete. Then we could solve the Halting Problem using the following algorithm:
 \begin{algo}
 \Function{$H(A)$}{}
-  \For{$x\in$ all possible strings\footnote{In case it wasn't clear: we're iterating in ``alphabetical order'' from shorter to longer. This procedure is sometimes also jokingly referred to as the \textit{British Museum algorithm} because  it's akin to using chimps in front of typewriters in an attempt to reproduce all the books in the British Museum.}}
+  \For{$x\in$ all possible strings\footnote{In case it wasn't clear: we're iterating in lexicographical order. This procedure is sometimes also jokingly referred to as the \textit{British Museum algorithm} because  it's akin to using chimps in front of typewriters in an attempt to reproduce all the books in the British Museum.}}
     \If{$x$ proves <<$A(A)$  doesn't halt>>}
       \State reject
     \EndIf
@@ -371,7 +372,7 @@ Nevertheless, this isn't the proof I want to use going forward. The reasons are 
 \item The parallels to Gödel's and Rosser's original proofs are lost. (This one's the biggie.)
 \end{itemize}
 We can do better. Watch this:
-\begin{proof}
+\begin{proof}[Second Proof Of Theorem~\ref{first-by-comp}]
 Consider the following algorithm:
 \begin{algo}
 \Function{$P(A)$}{}
@@ -421,7 +422,7 @@ I now claim that <<$P(P)$ doesn't halt>> is undecidable in $\F$. Let's call this
 
 Is anybody else experiencing déjà vu? Note that, whereas in the previous proof we only established the \textit{existence} of undecidable sentences in $\F$, here we actually have a concrete undecidable sentence on our hands. And we didn't even need the Halting Problem!
 
-Moreover, almost miraculously, the two cases for $\iGoedel$'s provability run into the exact same problems as $G$. In the first case $\F$ plants its $\F$ace squarely in inconsistency. In the second one the precise correlation between the information $\F$ communicated and the facts insofar as they can be determined and demonstrated is such as to cause epistemological problems of sufficient magnitude as to lay upon the logical and semantic resources of the English language a heavier burden than they can reasonably be expected to bear. It told a lie.\cite{yes-prime-minister}
+Moreover, almost miraculously, the two cases for $\iGoedel$'s provability run into the exact same problems as $G$. In the first case $\F$ plants its $\F$ace squarely in inconsistency. In the second one the precise correlation between the information $\F$ communicated and the facts insofar as they can be determined and demonstrated is such as to cause epistemological problems of sufficient magnitude as to lay upon the logical and semantic resources of the English language a heavier burden than they can reasonably be expected to bear. It told a lie~\cite{yes-prime-minister}.
 
 Upon closer inspection we notice that we're even dealing with the same kind of lie:
 \begin{center}
@@ -547,9 +548,15 @@ The incompleteness theorems are now immediate. All we have to do is to encode th
 As a consequence computational undecidability and logical undecidability go hand in hand. And elementary arithmetic is just one further entry in the long list containing the Game of Life, \scalebox{0.95}{Fractran}, \scalebox{0.9}{Post Tag Systems}, \scalebox{0.85}{Magic the Gathering}, \scalebox{0.8}{the human brain}, \scalebox{0.75}{Rule 110}, \scalebox{0.7}{the Lambda Calculus}, \scalebox{0.65}{musical notation}, \scalebox{0.6}{\dots}\\[2em]
 \footnotesize{(Thank you so much for your attention! The cake I promised in the abstract is on its way. Please stand by.) $\mathghost$}
 
-\begin{thebibliography}{1}
-\bibitem{trump} 
-Donald Trump, \textit{Twitter on 6. January 2018} (I just want to be able to say that Donald Trump has been cited when discussing the fundamentals of mathematics.)
+\begin{thebibliography}{6}
+\bibitem{goedel}
+Kurt Gödel, \textit{Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I}, Monatshefte für Mathematik und Physik, Issue 38, Dec. 1931 pp. 173--198
+\bibitem{rosser}
+John Barkley Rosser, \textit{Extensions of Some Theorems of Gödel and Church}, Journal of Symbolic Logic, Volume 1, No. 3, Sep. 1936, pp. 87--91
+\bibitem{trump}
+Donald Trump, Twitter, 6. Jan. 2018 (I just want to be able to say that Donald Trump has been cited when discussing the fundamentals of mathematics.)
+\bibitem{turing}
+Alan Turing, \textit{On Computable Numbers, with an Application to the Entscheidungsproblem}, Proceedings of the London Mathematical Society, Volume s2--42, Issue 1, 1937, pp. 230--265
 \bibitem{yes-prime-minister}
 Yes, Prime Minister, \textit{The Tangled Web}
 \bibitem{aaronson} Algorithm $B$ also appears in Scott Aaronson's \textit{Quantum Computing since Democritus} where he uses it to give a pseudo proof of the Second Incompleteness Theorem. It was in plugging the holes in Aaronson's argument that these ideas took their origin.
